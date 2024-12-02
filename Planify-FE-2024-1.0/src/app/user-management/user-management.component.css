@@ -1,0 +1,266 @@
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.main-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden; /* Evita el scroll en el contenedor principal */
+  height: 100vh;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+
+.footer {
+  background: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 80px;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+}
+
+.btn-footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 40px;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100dvh;
+  height: 100dvh;
+}
+
+.btn {
+  padding: 17px 20px;
+}
+
+.btn-event {
+  background: #219dbc96;
+  cursor: not-allowed;
+  color: white;
+  border-radius: 15px;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  padding: 17px 20px;
+  text-align: center;
+  margin: 0 9px;
+  z-index: -1;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #d9d9d9;
+}
+
+/* Leyenda de colores */
+.legendModal-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.legendModal-btn:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.legendModal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 50; /* Es un modal por lo que tiene que cerrarlo para poder seguir navegando */
+}
+
+.legendModal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 8px;
+  width: 60%;
+  max-width: 500px;
+  gap: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.legendModal h2 {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #484d6d;
+  margin: 0;
+}
+
+.legendModal-line {
+  width: 100%;
+  height: 5px;
+  background-color: #e74c3c;
+  margin-inline: auto;
+  border-radius: 5px;
+  margin-bottom: 11px;
+}
+
+.user-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 12px 0; /* Separación entre tarjetas */
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.user-card.user {
+  background-color: #484d6d;
+  color: white;
+}
+
+.user-card.blocked {
+  background-color: #ee6352;
+  color: white;
+}
+
+.user-card.inactive {
+  background-color: #cdcece;
+  color: #6c757d;
+}
+
+.user-card p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  cursor: pointer;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+/* Barra de búsqueda */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 40px;
+  border-radius: 20px;
+  padding: 0 10px;
+}
+
+.filter {
+  width: 200px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+  outline: none;
+}
+
+.filter:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Media queries para hacer el diseño responsive */
+@media (max-width: 1024px) {
+  .menu-lateral {
+    width: 200px; /* Reduce el tamaño del menú lateral en pantallas medianas */
+  }
+
+  .footer {
+    width: calc(100vw - 200px); /* Ajusta el ancho del footer */
+  }
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .menu-lateral {
+    width: 100%; /* Haz que el menú lateral ocupe todo el ancho en pantallas pequeñas */
+    height: auto;
+    transform: translateY(0); /* Asegura que esté visible */
+    position: static; /* Ajusta la posición para que no sea fija */
+  }
+
+  .footer {
+    width: 100%;
+    position: static;
+    bottom: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-name {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    padding: 10px 15px; /* Ajusta el tamaño de los botones */
+    font-size: 0.9rem;
+  }
+
+  .logo {
+    width: 70px;
+    height: 70px;
+  }
+}

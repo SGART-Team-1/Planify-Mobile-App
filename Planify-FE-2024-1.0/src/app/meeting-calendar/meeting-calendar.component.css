@@ -1,0 +1,41 @@
+.common-interface {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+}
+
+.calendar-container {
+  flex: 1; /* Toma el espacio restante */
+  overflow-y: auto; /* Añade scroll si el contenido es más alto */
+}
+
+.footer {
+  background-color: #f1f1f1; /* Color de fondo del footer */
+  padding: 10px;
+  text-align: center;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+}
+
+.btn-footer-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn {
+  padding: 17px 20px;
+}
+
+.btn-event {
+  background: #219dbc96;
+  cursor: not-allowed;
+  color: white;
+  border-radius: 15px;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  padding: 17px 20px;
+  text-align: center;
+  margin: 0 9px;
+  z-index: -1;
+}

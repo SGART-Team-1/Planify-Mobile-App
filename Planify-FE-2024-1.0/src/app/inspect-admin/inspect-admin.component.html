@@ -1,0 +1,237 @@
+<div class="common-interface">
+  <div class="body">
+    <div class="main-container">
+      <app-sidebar></app-sidebar>
+      <div class="content">
+        <!-- Contenido principal -->
+        <div class="header">
+          <button class="closebtn" (click)="closeWindow()">
+            <img class="close" src="../../assets/btnCerrar.png" alt="Close" />
+          </button>
+        </div>
+        <div class="admin-info">
+          <div class="pers_data-account-photo">
+            <div class="pers_data-account">
+              <fieldset id="name-surnames">
+                <legend>Datos Personales</legend>
+                <div class="inside-fieldset pd-account-inside-fieldset">
+                  <span class="admin-small-fields">
+                    <span
+                      class="compulsory-message"
+                      title="Campo obligatorio"
+                      *ngIf="isEditing"
+                    >
+                      <img
+                        class="compulsory-icon"
+                        src="../../assets/register/compulsory.png"
+                        alt="Compulsory"
+                      />
+                    </span>
+                    <strong class="pd-info" for="name">Nombre:</strong>
+                    <input
+                      class="name"
+                      type="text"
+                      id="name"
+                      name="name"
+                      [(ngModel)]="name"
+                      (input)="validateName()"
+                      [ngClass]="{
+                        'input-invalid':
+                          isInvalidName && !isEmptyName && isEditing,
+                        'input-valid':
+                          !isInvalidName && name && !isEmptyName && isEditing
+                      }"
+                      placeholder="Nombre"
+                      [readonly]="!isEditing"
+                    />
+                    <span class="validation-icon">
+                      <span
+                        *ngIf="isInvalidName && !isEmptyName && isEditing"
+                        class="error-message"
+                        title="Nombre no válido"
+                      >
+                        <img
+                          class="error-icon"
+                          src="../../assets/register/wrong.png"
+                          alt="Wrong"
+                        />
+                      </span>
+                    </span>
+                  </span>
+                  <span class="admin-small-fields">
+                    <span
+                      class="compulsory-message"
+                      title="Campo obligatorio"
+                      *ngIf="isEditing"
+                    >
+                      <img
+                        class="compulsory-icon"
+                        src="../../assets/register/compulsory.png"
+                        alt="Compulsory"
+                      />
+                    </span>
+                    <strong class="pd-info" for="surnames">Apellidos:</strong>
+                    <input
+                      class="surnames"
+                      type="text"
+                      id="surnames"
+                      name="surnames"
+                      [(ngModel)]="surnames"
+                      (input)="validateSurnames()"
+                      [ngClass]="{
+                        'input-invalid':
+                          isInvalidSurnames && !isEmptyName && isEditing,
+                        'input-valid':
+                          !isInvalidSurnames &&
+                          name &&
+                          !isEmptyName &&
+                          isEditing
+                      }"
+                      placeholder="Apellidos"
+                      [readonly]="!isEditing"
+                    />
+                    <span class="validation-icon">
+                      <span
+                        *ngIf="
+                          isInvalidSurnames && !isEmptySurnames && isEditing
+                        "
+                        class="error-message"
+                        title="Apellidos no válidos"
+                      >
+                        <img
+                          class="error-icon"
+                          src="../../assets/register/wrong.png"
+                          alt="Wrong"
+                        />
+                      </span>
+                    </span>
+                  </span>
+                </div>
+              </fieldset>
+              <fieldset id="email-pwd">
+                <legend>Cuenta</legend>
+                <div class="inside-fieldset pd-account-inside-fieldset">
+                  <span class="admin-small-fields">
+                    <strong class="account-info" for="email"
+                      >Correo Electrónico:</strong
+                    >
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      [(ngModel)]="email"
+                      placeholder="Correo Electrónico"
+                      readonly
+                    />
+                  </span>
+                </div>
+              </fieldset>
+            </div>
+            <div class="uploadImg">
+              <fieldset class="fieldImg">
+                <img
+                  class="adminImage"
+                  [src]="
+                    tempProfileImageUrl
+                      ? tempProfileImageUrl
+                      : originalProfileImageUrl
+                      ? originalProfileImageUrl
+                      : '../../assets/register/userDefault.png'
+                  "
+                  alt="AdminImg"
+                />
+
+                <!-- El input ahora está debajo de la imagen -->
+                <input
+                  *ngIf="isEditing"
+                  type="file"
+                  (change)="onImageChange($event)"
+                  accept="image/*"
+                  class="uploadBtn"
+                />
+              </fieldset>
+            </div>
+          </div>
+          <div class="areaBusiness">
+            <fieldset class="fieldBusiness">
+              <legend>Empresa</legend>
+              <div class="inside-fieldset business-inside-fieldset">
+                <span class="admin-small-fields">
+                  <span
+                    class="compulsory-message"
+                    title="Campo obligatorio"
+                    *ngIf="isEditing"
+                  >
+                    <img
+                      class="compulsory-icon"
+                      src="../../assets/register/compulsory.png"
+                      alt="Compulsory"
+                    />
+                  </span>
+                  <strong class="center-internal-info" for="center"
+                    >Centro:</strong
+                  >
+                  <input
+                    [ngClass]="{
+                    'input-invalid':
+                      !isEmptyCenter && isEditing,
+                    'input-valid':
+                      center && !isEmptyCenter && isEditing
+                    }"
+                    type="text"
+                    id="center"
+                    name="center"
+                    (input)="validateCenter()"
+                    [(ngModel)]="center"
+                    placeholder="Centro"
+                    [readonly]="!isEditing"
+                  />
+                </span>
+                <span class="admin-small-fields">
+                  <span
+                    class="compulsory-message"
+                    title="Campo obligatorio"
+                    *ngIf="isEditing"
+                  >
+                  </span>
+                  <strong class="center-internal-info" for="internal"
+                    >Interno: </strong
+                  >
+                    <label class="container">
+                      <input
+                        type="checkbox"
+                        [(ngModel)]="internal"
+                        [disabled]=!isEditing
+                      />
+                      <svg viewBox="0 0 64 64" height="2em" width="2em">
+                        <path
+                          d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
+                          pathLength="575.0541381835938"
+                          class="path"
+                        ></path>
+                      </svg>
+                    </label>
+                </span>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="footer">
+          <div class="btn-footer-container">
+            <button class="btn-footer" (click)="toggleEdit()">
+              {{ isEditing ? "Cancelar" : "Modificar" }}
+            </button>
+            <button
+              class="btn-footer"
+              *ngIf="isEditing"
+              (click)="saveChanges()"
+            >
+              Guardar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

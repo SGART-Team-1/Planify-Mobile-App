@@ -1,0 +1,60 @@
+.btn {
+  display: flex;
+  gap: 20px;
+}
+
+.red {
+  color: #ff0000;
+}
+
+.blue {
+  color: #219ebc;
+}
+button {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #f0f0f0;
+}
+
+input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 3px solid #e0e0e0;
+  border-radius: 15px;
+  width: 90%;
+  transition: border-color 0.3s, background-color 0.3s;
+  position: relative;
+}
+
+p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.message-qr-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-container {
+  justify-content: end;
+}
+.qr {
+  margin: 12px;
+}

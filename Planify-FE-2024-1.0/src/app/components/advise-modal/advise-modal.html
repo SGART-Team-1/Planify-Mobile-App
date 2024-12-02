@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>{{ data.titulo }}</h2>
+<mat-dialog-content>
+  <p [innerHTML]="data.error"></p>
+</mat-dialog-content>
+<mat-dialog-actions class="btn">
+  <button
+    mat-button
+    class="cancelar"
+    *ngIf="data.cancelar"
+    (click)="onCancel()"
+  >
+    Cancelar
+  </button>
+  <button
+    mat-button
+    [ngClass]="{'cancelar': !data.cancelar}"
+    *ngIf="data.aceptar"
+    (click)="onConfirm()"
+  >
+    Aceptar
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,23 @@
+.btn {
+  display: flex;
+  gap: 20px;
+}
+
+.cancelar {
+  color: #ff0000;
+}
+
+button {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #f0f0f0;
+}
+
+mat-dialog-content{
+    width: fit-content;
+}

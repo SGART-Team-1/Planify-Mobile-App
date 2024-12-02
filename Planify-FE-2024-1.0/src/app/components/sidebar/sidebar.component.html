@@ -1,0 +1,55 @@
+
+<div class="menu-lateral">
+    <div class="home-container">
+      <img class="logo" src="../../../assets/logo.png" alt="Logo" />
+      <h1 class="app-name">Planify</h1>
+    </div>
+    <div class="sidebar__nav" *ngIf="actualUser.dtype == 'Administrator'">
+      
+        <button class="btn sidebar__item" routerLink="/user-management" routerLinkActive="active">
+            Gestionar Usuarios
+        </button>
+        <button class="btn sidebar__item" routerLink="/admin-management" routerLinkActive="active">
+            Gestionar Administradores
+        </button>
+        <button class="btn sidebar__item" routerLink="/work-schedule" routerLinkActive="active">
+            Horario laboral
+        </button>
+      
+    </div>
+
+    <div class="sidebar__nav" *ngIf="actualUser.dtype == 'CommonUser'">
+      <button class="btn sidebar__item" routerLink="/user-calendar" routerLinkActive="active">
+        Mis Reuniones
+    </button>
+      
+    
+    </div>
+
+    <div class="perfil-container" >
+      <div class="actualuser" *ngIf="actualUser.dtype == 'Administrator'" routerLink="/inspect-admin/{{actualUser.id}}" routerLinkActive="active"> 
+        <img
+          class="actualUserImg"
+          src="{{actualUser.photo}}"
+          alt="Perfil"
+        />
+        <p class="actualUserImgName" >{{ actualUser.name }}</p>
+      </div>
+      <div class="actualuser" *ngIf="actualUser.dtype == 'CommonUser'" routerLink="/inspect-user/{{actualUser.id}}" routerLinkActive="active"> 
+        <img
+          class="actualUserImg"
+          src="{{actualUser.photo}}"
+          alt="Perfil"
+        />
+        <p class="actualUserImgName" >{{ actualUser.name }}</p>
+      </div>
+      
+      <div class="exit" *ngIf="actualUser.dtype == 'Administrator' || actualUser.dtype == 'CommonUser'" (click)="logOut()">
+        <img
+          class="exitImg"
+          src="../../../assets/cerrarSesion.png"
+          alt="Salir">
+        <p class="actualUserImgName">Cerrar sesión</p>
+      </div>
+    </div>
+</div>

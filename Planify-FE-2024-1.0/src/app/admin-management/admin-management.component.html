@@ -1,0 +1,49 @@
+<div class="common-interface"><div class="body">
+  <div class="main-container">
+    <app-sidebar></app-sidebar>
+    <div class="content">
+      <div class="header">
+        <input
+          type="text"
+          placeholder="Buscar administradores..."
+          (input)="onSearch($event)"
+          class="search-bar"
+        />
+      </div>
+      <!-- Contenido principal -->
+      <app-users-viewer
+        [users]="admins"
+        [selectedUser]="administradorSeleccionado"
+        (userClick)="onUserClick($event)"
+        (search)="onSearch($event)"
+      ></app-users-viewer>
+
+      <div class="footer">
+        <div class="btn-footer-container">
+          <div class="btn-footer-container">
+            <button
+              [ngClass]="{
+                  'btn': isClicked,
+                  'btn-event': !isClicked,
+                }"
+              (click)="inspectAdmin()"
+            >
+              Inspeccionar
+            </button>
+            <button
+              [ngClass]="{
+                  'btn': isClicked,
+                  'btn-event': !isClicked,
+                }"
+              (click)="openModalDialog('eliminar')"
+            >
+              Eliminar
+            </button>
+            <button class="btn" (click)="createAdmin()">Crear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

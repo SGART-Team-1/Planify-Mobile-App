@@ -1,0 +1,402 @@
+<body>
+  <div class="logo-appName" [routerLink]="'/home'">
+    <img class="logo" src="../../assets/logo.png" alt="Logo" />
+    <h1 class="app-name">PLANIFY</h1>
+  </div>
+
+  <div class="registration-form">
+    <form action="#" method="post">
+      <fieldset>
+        <legend>Datos Personales</legend>
+        <div class="name-surnames">
+          <div class="compulsory-input-name">
+            <span class="compulsory-message" title="Campo obligatorio">
+              <img
+                class="compulsory-icon"
+                src="../../assets/register/compulsory.png"
+                alt="Compulsory"
+              />
+            </span>
+            <input
+              class="name"
+              type="text"
+              id="name"
+              name="name"
+              [(ngModel)]="name"
+              placeholder="Nombre"
+              (input)="validateName()"
+              [ngClass]="{
+                'input-invalid': isInvalidName && !isEmptyName,
+                'input-valid': !isInvalidName && name && !isEmptyName
+              }"
+              required
+            />
+            <span class="validation-icon">
+              <span
+                *ngIf="isInvalidName && !isEmptyName"
+                class="error-message"
+                title="Nombre no válido"
+              >
+                <img
+                  class="error-icon"
+                  src="../../assets/register/wrong.png"
+                  alt="Wrong"
+                />
+              </span>
+            </span>
+          </div>
+
+          <div class="compulsory-input-surnames">
+            <span class="compulsory-message" title="Campo obligatorio">
+              <img
+                class="compulsory-icon-surnames"
+                src="../../assets/register/compulsory.png"
+                alt="Compulsory"
+              />
+            </span>
+            <input
+              class="surnames"
+              type="text"
+              id="surnames"
+              name="surnames"
+              [(ngModel)]="surnames"
+              placeholder="Apellidos"
+              (input)="validateSurnames()"
+              [ngClass]="{
+                'input-invalid': isInvalidSurnames && !isEmptySurnames,
+                'input-valid':
+                  !isInvalidSurnames && surnames && !isEmptySurnames
+              }"
+              required
+            />
+            <span class="validation-icon">
+              <span
+                *ngIf="isInvalidSurnames && !isEmptySurnames"
+                class="error-message"
+                title="Apellidos no válidos"
+              >
+                <img
+                  class="error-icon"
+                  src="../../assets/register/wrong.png"
+                  alt="Wrong"
+                />
+              </span>
+            </span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Empresa</legend>
+        <div class="department-center">
+          <div class="compulsory-input-business">
+            <span class="compulsory-message" title="Campo obligatorio">
+              <img
+                class="compulsory-icon-business"
+                src="../../assets/register/compulsory.png"
+                alt="Compulsory"
+              />
+            </span>
+            <input
+              class="input-business"
+              type="text"
+              id="center"
+              name="center"
+              [(ngModel)]="center"
+              placeholder="Centro"
+              (change)="checkFormValidity()"
+              required
+            />
+            <span
+              class="help-icon"
+              title="Centro al que pertenece dentro de la empresa"
+            >
+              <img
+                class="interrogationImg"
+                src="../../assets/register/interrogation.png"
+                alt="Interrogation"
+              />
+            </span>
+          </div>
+          <div class="opt-input-business">
+            <input
+              class="input-business"
+              type="text"
+              id="department"
+              name="department"
+              [(ngModel)]="department"
+              placeholder="Departamento"
+            />
+            <span
+              class="help-icon"
+              title="Departamento al que pertenece dentro de la empresa"
+            >
+              <img
+                class="interrogationImg"
+                src="../../assets/register/interrogation.png"
+                alt="Interrogation"
+              />
+            </span>
+          </div>
+        </div>
+
+        <div class="profile-discharge_date">
+          <div class="compulsory-input-business">
+            <span class="compulsory-message" title="Campo obligatorio">
+              <img
+                class="compulsory-icon-business"
+                src="../../assets/register/compulsory.png"
+                alt="Compulsory"
+              />
+            </span>
+            <input
+              class="input-business"
+              type="date"
+              id="discharge_date"
+              name="discharge_date"
+              [(ngModel)]="discharge_date"
+              placeholder="Fecha de Alta"
+              (change)="checkFormValidity()"
+              required
+            />
+            <span class="help-icon" title="Fecha de alta en la empresa">
+              <img
+                class="interrogationImg"
+                src="../../assets/register/interrogation.png"
+                alt="Interrogation"
+              />
+            </span>
+          </div>
+
+          <div class="opt-input-business">
+            <input
+              class="input-business"
+              type="text"
+              id="profile"
+              name="profile"
+              [(ngModel)]="profile"
+              placeholder="Perfil en la Empresa"
+            />
+            <span
+              class="help-icon"
+              title="Posición que ocupa dentro de la empresa"
+            >
+              <img
+                class="interrogationImg"
+                src="../../assets/register/interrogation.png"
+                alt="Interrogation"
+              />
+            </span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Cuenta</legend>
+        <div class="email-pwds-image">
+          <div class="email-pwds">
+            <div class="compulsory-input-business">
+              <span class="compulsory-message" title="Campo obligatorio">
+                <img
+                  class="compulsory-icon"
+                  src="../../assets/register/compulsory.png"
+                  alt="Compulsory"
+                />
+              </span>
+              <div class="email">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  [(ngModel)]="email"
+                  placeholder="Correo Electrónico"
+                  (input)="validateEmail()"
+                  [ngClass]="{
+                    'input-invalid': isInvalidEmail && !isEmptyEmail,
+                    'input-valid': !isInvalidEmail && email && !isEmptyEmail
+                  }"
+                  required
+                />
+                <span class="validation-icon">
+                  <span
+                    *ngIf="isInvalidEmail && !isEmptyEmail"
+                    class="error-message"
+                    title="Correo no válido"
+                  >
+                    <img
+                      class="validation-icon-Account error-icon-pwd"
+                      src="../../assets/register/wrong.png"
+                      alt="Wrong"
+                    />
+                  </span>
+                </span>
+              </div>
+            </div>
+
+            <div class="compulsory-input-business">
+              <span class="compulsory-message" title="Campo obligatorio">
+                <img
+                  class="compulsory-icon"
+                  src="../../assets/register/compulsory.png"
+                  alt="Compulsory"
+                />
+              </span>
+              <input
+                [type]="showPassword ? 'text' : 'password'"
+                id="pwd1"
+                name="pwd1"
+                [(ngModel)]="pwd1"
+                placeholder="Contraseña"
+                (input)="validatePassword()"
+                [ngClass]="{
+                  'input-invalid': isInvalidPassword && !isEmptyPassword,
+                  'input-valid': !isInvalidPassword && pwd1 && !isEmptyPassword
+                }"
+                required
+              />
+              <div class="show-validate-password">
+              <button
+              class="show-password"
+              (click)="showPassword = !showPassword"
+              type="button"
+            >
+              <img
+                class="showPwd"
+                [src]="
+                  showPassword
+                    ? '../../assets/verContraseña.png'
+                    : '../../assets/NOverContraseña.png'
+                "
+                alt="ShowPassword"
+              />
+            </button>
+              <span class="validation-icon-pwd1">
+                <span
+                  *ngIf="isInvalidPassword && !isEmptyPassword"
+                  class="error-message"
+                  title="La contraseña no cumple con los requisitos"
+                >
+                  <img
+                    class="validation-icon-Account error-icon-pwd pwd1"
+                    src="../../assets/register/wrong.png"
+                    alt="Wrong"
+                  />
+                </span>
+                <span
+                  *ngIf="!isInvalidPassword && !isEmptyPassword"
+                  class="error-message"
+                  title="Contraseña válida"
+                >
+                  <img
+                    class="validation-icon-Account right-icon pwd1"
+                    src="../../assets/register/right.png"
+                    alt="Right"
+                  />
+                </span>
+              
+              </span>
+            </div>
+              <span
+                class="help-icon"
+                title="La contraseña debe contener al menos:
+- 8 caracteres mínimo
+- 1 mayúscula
+- 1 minúscula
+- 1 carácter especial
+- 1 número"
+              >
+                <img
+                  class="interrogationImg-account"
+                  src="../../assets/register/interrogation.png"
+                  alt="Interrogation"
+                />
+              </span>
+            </div>
+            <div class="compulsory-input-business">
+              <span class="compulsory-message" title="Campo obligatorio">
+                <img
+                  class="compulsory-icon"
+                  src="../../assets/register/compulsory.png"
+                  alt="Compulsory"
+                />
+              </span>
+              <input
+                [type]="showPassword ? 'text' : 'password'"
+                placeholder="Confirmar Contraseña"
+                id="pwd2"
+                name="pwd2"
+                [(ngModel)]="pwd2"
+                (input)="validatePassword2()"
+                [ngClass]="{
+                  'input-invalid': isInvalidPassword2 && !isEmptyPassword2,
+                  'input-valid':
+                    !isInvalidPassword2 && pwd2 && !isEmptyPassword2
+                }"
+                required
+              />
+              <span class="validation-icon">
+                <span
+                  *ngIf="isInvalidPassword2 && !isEmptyPassword2"
+                  class="error-message"
+                  title="No coincide con la contraseña"
+                >
+                  <img
+                    class="validation-icon-Account error-icon-pwd"
+                    src="../../assets/register/wrong.png"
+                    alt="Wrong"
+                  />
+                </span>
+                <span
+                  *ngIf="!isInvalidPassword2 && !isEmptyPassword2"
+                  class="error-message"
+                  title="Contraseña válida"
+                >
+                  <img
+                    class="validation-icon-Account right-icon"
+                    src="../../assets/register/right.png"
+                    alt="Right"
+                  />
+                </span>
+              </span>
+              <span
+                class="help-icon"
+                title="Repita la contraseña que ha escrito previamente"
+              >
+                <img
+                  class="interrogationImg-account"
+                  src="../../assets/register/interrogation.png"
+                  alt="Interrogation"
+                />
+              </span>
+            </div>
+
+          </div>
+
+          <fieldset class="uploadImg">
+            <img class="userImage" [src]="profileImageUrl" alt="UserImg" />
+            <input
+              type="file"
+              id="profilePic"
+              (change)="onFileSelected($event)"
+              accept="image/*"
+              style="display: none"
+            />
+            <button
+              type="file"
+              class="submitImageButton"
+              (click)="triggerFileInput()"
+            >
+              Subir Imagen
+            </button>
+          </fieldset>
+        </div>
+      </fieldset>
+      <button class="buttonRegister" type="submit" (click)="register()">
+        Registrarse
+      </button>
+      <p>¿Ya tienes cuenta? <a [routerLink]="'/login'">Iniciar sesión</a></p>
+
+      <span class="error-message" style="color: red"> {{ error }} </span>
+    </form>
+  </div>
+</body>

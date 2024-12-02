@@ -1,0 +1,101 @@
+.container {
+  background-color: #bababa;
+  width: 600px;
+  height: 90dvh;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h1 {
+  font-size: 30px;
+  color: #083744;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.absence-list {
+  height: 75dvh;
+  overflow-y: auto;
+  background-color: #eff5f6;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid #4ebdc4;
+}
+
+.absence-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.absence-list li {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #3a959a;
+  color: #083744;
+  position: relative; /* Enable absolute positioning inside */
+}
+
+.absence-list li:last-child {
+  margin-bottom: 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.button-container button {
+  width: 30%;
+  padding: 10px;
+  background-color: #4ebdc4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.button-container button:hover {
+  background-color: #3a959a;
+}
+
+.user-header {
+  text-align: center;
+  margin-top: 150px;
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #023047;
+}
+
+.delete-btn {
+  position: absolute;
+  right: 50px; /* Align to the right side */
+  top: 50%; /* Align vertically in the middle */
+  transform: translateY(-50%); /* Correct vertical centering */
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.delete-btn:hover {
+  width: 55px;
+  height: 55px;
+}
+
+.delete {
+  width: 100%;
+  height: 100%;
+}
+
+.error-message {
+  color: rgb(255, 0, 0);
+  font-size: 1.2rem;
+  margin-top: 20px;
+  text-align: center;
+}

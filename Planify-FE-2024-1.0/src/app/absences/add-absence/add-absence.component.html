@@ -1,0 +1,43 @@
+
+          
+
+    <form class="container">
+      
+      <div class="absence-form">
+        <h1>Añadir ausencias a {{user.name}}</h1>
+        
+        <fieldset>
+          <legend>Tiempo de ausencia</legend>
+          
+          <div class="date-picker">
+            <div>
+              <label for="from-date">Desde</label>
+              <input type="date" id="from-date" [(ngModel)]="fromDate" [ngModelOptions]="{ standalone: true }">
+              <input *ngIf="!allDayLong" type="time" id="from-time" [(ngModel)]="fromTime" [ngModelOptions]="{ standalone: true }">
+            </div>
+            <div>
+              <label for="to-date">Hasta</label>
+              <input type="date" id="to-date" [(ngModel)]="toDate" [ngModelOptions]="{ standalone: true }">
+              <input *ngIf="!allDayLong" type="time" id="to-time" [(ngModel)]="toTime" [ngModelOptions]="{ standalone: true }">
+            </div>
+          </div>
+          <label for="all-day">Todo el día</label>
+          <input type="checkbox" id="all-day" [(ngModel)]="allDayLong" [ngModelOptions]="{ standalone: true }">
+        </fieldset>
+
+        <fieldset>
+          <legend>Tipo de ausencia</legend>
+          <div class="absence-type">
+            <select id="absence-type" [(ngModel)]="absenceType" [ngModelOptions]="{ standalone: true }">
+              <option value="" disabled selected>Seleccionar</option>
+              <option value="vacaciones">Vacaciones</option>
+              <option value="baja">Baja</option>
+              <option value="permiso">Permiso</option>
+            </select>
+          </div>            
+        </fieldset>
+
+        <button class="btn confirm-button" type="button" (click)="confirmAbsence()">Confirmar Ausencia</button>
+        <button class="btn cancel-button" type="button" (click)="cancelAbsence()">Cancelar</button>
+      </div>
+    </form>

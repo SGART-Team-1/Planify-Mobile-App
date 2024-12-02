@@ -1,0 +1,173 @@
+<div class="body">
+  <div class="header">
+    <div class="home-container">
+      <img class="logo" src="../../assets/logo.png" alt="Logo" />
+      <h1 class="app-name">Planify</h1>
+    </div>
+
+    <div class="btn-container">
+      <button class="btn btn-register" (click)="goToRegister()">
+        Registrarse
+      </button>
+      <button class="btn btn-login" (click)="goToLogin()">
+        Iniciar sesión
+        <div class="arrow-wrapper">
+          <div class="arrow"></div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <div class="init">
+    <div class="init-background">
+      <div class="init-content-box">
+        <div class="init-text">
+          <p class="title">
+            Organiza tus reuniones de manera fácil y eficiente
+          </p>
+          <p class="description">
+            Simplifica la planificación, coordina a tu equipo y mantén todas tus
+            citas bajo control, todo en un solo lugar.
+          </p>
+          <a class="btn btn-secondary" (click)="goToAbout()">Descubre más</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="main-section">
+    <!-- Sección de Introducción -->
+    <section id="about" #aboutSection class="section about">
+      <div class="about-description">
+        <h2>¿Por qué elegirnos?</h2>
+
+        <div class="about-text">
+          <p>
+            Ofrecemos una plataforma avanzada para la gestión de reuniones
+            telemáticas diseñada para mejorar tanto la productividad como la
+            eficiencia de los equipos. Con una interfaz intuitiva y optimizada,
+            podrás coordinar tus reuniones de manera sencilla y asegurar una
+            mejor gestión de tu tiempo y el de tu equipo.
+          </p>
+          <p>
+            Podrás programar reuniones de forma precisa, evitando solapamientos
+            y respetando siempre el derecho de desconexión digital de los
+            trabajadores fuera de su horario laboral. Con Planify, podrás:
+          </p>
+          <ul>
+            <li>
+              Organizar tus reuniones en segundos y visualizarlas en un
+              calendario global.
+            </li>
+            <li>
+              Registrar tus ausencias y notificarlas a los organizadores de tus
+              reuniones.
+            </li>
+            <li>
+              Consultar la disponibilidad de tus compañeros e invitarlos a tus
+              reuniones.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="about-image">
+        <img src="../../assets/home_about.png" alt="About" />
+      </div>
+    </section>
+
+    <!-- Sección de Características -->
+    <section class="section features">
+      <h2>Características destacadas</h2>
+      <div class="features-line"></div>
+      <div class="feature-cards">
+        <div class="feature-card">
+          <h3>Planificación inteligente de reuniones</h3>
+          <p>
+            Programa tus reuniones de manera automática y sin solapamientos,
+            detectando los horarios más convenientes según la disponibilidad
+            real de cada miembro.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Notificaciones y recordatorios personalizados</h3>
+          <p>
+            Recibe notificaciones y recordatorios adaptados a tus necesidades
+            para no perderte ninguna reunión importante y gestionar tu tiempo de
+            manera eficaz.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Gestión de disponibilidad y ausencias</h3>
+          <p>
+            Consulta la disponibilidad de tu equipo y notifica ausencias
+            directamente en el calendario, optimizando la planificación y
+            evitando malentendidos.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Testimonios -->
+    <section class="section testimonials">
+      <h2>Lo que dicen nuestros usuarios</h2>
+      <div class="testimonials-line"></div>
+      <div class="testimonial-cards">
+        <div class="testimonial-card">
+          <p>
+            "Planify ha transformado la forma en que organizamos reuniones en
+            nuestra empresa. ¡Altamente recomendada!"
+          </p>
+          <p style="font-style: normal">
+            <strong>- Antonio Santos-Olmo Parra</strong>, CEO de Empresa ACME &
+            Co.
+          </p>
+        </div>
+        <div class="testimonial-card">
+          <p>
+            "Gracias a esta herramienta, puedo planificar y gestionar mis
+            proyectos de manera más fácil y eficiente."
+          </p>
+          <p style="font-style: normal">
+            <strong>- María Ángeles Moraga De La Rubia</strong>, Gerente de
+            Proyectos Software
+          </p>
+        </div>
+        <div class="testimonial-card">
+          <p>
+            "¡Esta aplicación me encanta! Cumple con estándares de calidad que
+            otras empresas de la competencia no."
+          </p>
+          <p style="font-style: normal">
+            <strong>- Fernando Gualo Cejudo</strong>, Ingeniero de Calidad
+          </p>
+        </div>
+        <div class="testimonial-card">
+          <p>
+            "En esta plataforma, tengo la certeza de que nuestros datos están
+            protegidos. La seguridad que ofrece es superior a la de otras
+            herramientas."
+          </p>
+          <p style="font-style: normal">
+            <strong>- Luis Enrique Sánchez Crespo</strong>, Especialista en
+            Ciberseguridad
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Llamado a la Acción -->
+    <section class="section call-to-action">
+      <h2>¿Listo para mejorar tu productividad?</h2>
+      <p>
+        Comienza a organizar tus reuniones con nosotros y experimenta la
+        eficiencia que necesitas.
+      </p>
+      <button class="btn btn-primary" (click)="goToRegister()">
+        Regístrate gratis
+      </button>
+    </section>
+  </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2024 Planify. Todos los derechos reservados.</p>
+  </footer>
+</div>

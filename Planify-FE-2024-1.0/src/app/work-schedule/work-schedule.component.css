@@ -1,0 +1,216 @@
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  
+}
+
+.main-container {
+  display: flex;
+  flex: 1;
+}
+
+.titulo, .scheduleRegister{
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #023047;
+  margin: 0;
+  
+}
+
+.header {
+  background: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  width: calc(
+    100vw - 240px
+  ); /* Ajusta el ancho restando el ancho del menú lateral */
+  padding: 10px;
+  height: 80px;
+  position: fixed;
+  top: 0;
+}
+
+
+
+.footer {
+  background: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: calc(
+    100vw - 240px
+  ); /* Ajusta el ancho restando el ancho del menú lateral */
+  height: 80px;
+  color: white;
+  bottom: 0;
+  
+}
+
+.btn-event {
+  padding: 17px 20px;
+}
+
+.btn-footer{
+  background-color: #219ebc;
+  color: white;
+  border-radius: 15px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  padding: 17px 20px;
+  text-align: center;
+  margin: 0 9px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+  transition: transform 0.3s ease;
+  
+}
+
+.btn-footer:hover {
+  background: #219dbc9f;
+  transform: scale(1.05);
+}
+
+.btn-footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 40px;
+}
+
+.btn-allow-confirm {
+  background-color: #219ebc;
+  cursor: pointer;
+  color: white;
+  border-radius: 10px;
+  font-size: 1rem;
+  padding: 17px 20px;
+  text-align: center;
+  margin: 0 9px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+  transition: transform 0.3s ease;
+
+}
+
+
+.btn-allow-confirm:hover {
+  background: #219dbc9f;
+  transform: scale(1.05);
+}
+
+
+
+.scroll-container {
+  display: grid;
+  flex-direction: row;
+  margin-top: 85px;
+  max-height: 77vh;
+  overflow-y: scroll;
+  padding-right: 10px;
+  z-index: 0;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+
+.bloque-container {
+  background-color: #8ecae6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 12px auto;
+  padding: 18px;
+  border-radius: 12px;
+  width: 70%;
+  max-width: 600px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.15s ease;
+}
+
+.bloque-container:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra más intensa al pasar el ratón */
+  transform: translateY(-3px);
+}
+
+.time-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.time-block {
+  display: flex;
+  flex-direction: column; /* Organizar verticalmente */
+  align-items: flex-start; /* Alinear al inicio */
+  margin: 10px 30px; /* Margen vertical entre bloques de tiempo */
+}
+
+
+h4 {
+  font-size: 1.5rem; /* Tamaño de fuente */
+  font-weight: bold;
+  color: #023047; /* Color del texto */
+  margin-bottom: 10px; /* Margen inferior */
+  text-align: center; /* Centrar el texto */
+  
+}
+
+input[type="blockName"]{
+  font-size: 1.2rem; /* Tamaño de fuente */
+  padding: 10px; /* Espacio interno */
+  border: 1px solid #219ebc; /* Borde de color azul */
+  border-radius: 5px; /* Bordes redondeados */
+  width: 100%; /* Ancho completo */
+  max-width: 280px; /* Ancho máximo */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+}
+
+input[type="time"] {
+  font-size: 1.2rem; /* Tamaño de fuente */
+  padding: 10px; /* Espacio interno */
+  border: 1px solid #219ebc; /* Borde de color azul */
+  border-radius: 5px; /* Bordes redondeados */
+  width: 100%; /* Ancho completo */
+  max-width: 150px; /* Ancho máximo */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+}
+
+input[disabled] {
+  background-color: #e9ecef; /* Color de fondo para campos deshabilitados */
+  color: #686f73;
+  cursor: not-allowed; /* Cambiar el cursor al pasar por encima */
+}
+
+
+
+@media (max-width: 768px) {
+  .bloque-container {
+    width: 90%;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-footer {
+    width: 80%;
+    font-size: 0.9rem;
+  }
+}
+
+
+
+

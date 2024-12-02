@@ -1,0 +1,103 @@
+
+.legendModal-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .legendModal-btn:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  .legendModal {
+    display: flex; 
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Es un modal por lo que tiene que cerrarlo para poder seguir navegando */
+  }
+  
+  .legendModal-content {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #888; 
+    border-radius: 8px; 
+    width: 100%; 
+    height: fit-content;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .legendModal h2 {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #023047;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .legendModal-line {
+    width: 100%;
+    height: 5px;
+    background-color: #e74c3c;
+    margin-inline: auto;
+    border-radius: 5px;
+    margin-bottom: 11px;
+  }
+
+  .user-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    margin: 12px 0; /* Separación entre tarjetas */
+  }
+  
+  .user-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .user-card.user {
+    background-color: #023047; 
+    color: white; 
+  }
+  
+  .user-card.blocked {
+    background-color: #ee6352;
+    color: white;
+  }
+  
+  .user-card.inactive {
+    background-color: #f6aa3b;
+    color: white;
+  }
+  
+  .user-card p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black; 
+    cursor: pointer; 
+  }

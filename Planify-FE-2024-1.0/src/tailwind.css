@@ -1,0 +1,253 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.common-interface .btn {
+  background: #219ebc;
+  color: white;
+  border-radius: 15px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 15px;
+  text-align: center;
+  margin: 0 9px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+  transition: transform 0.3s ease;
+}
+
+.common-interface .btn:hover {
+  background: #219dbc9f;
+  transform: scale(1.05);
+}
+
+/*menu lateral igual */
+
+.common-interface body {
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 100dvh;
+}
+
+.common-interface .main-container {
+  display: flex;
+  flex: 1;
+  min-width: 1024px; /* Ajusta este valor al tamaño mínimo deseado */
+  position: relative;
+  overflow-x: auto; /* Permite el scroll horizontal */
+  height: 100%;
+}
+
+.common-interface .menu-lateral {
+  height: 100dvh;
+  width: 240px;
+  background: #023047;
+  color: white;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease-in-out;
+}
+
+.common-interface .home-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+  position: absolute;
+  top: 0;
+}
+
+.common-interface .app-name {
+  font-size: 2rem !important;
+  padding: 20px;
+  color: white;
+}
+
+.common-interface .logo {
+  width: 95px;
+  height: 95px;
+  padding: 10px;
+}
+
+.common-interface .sidebar__nav {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+}
+
+.common-interface .btn-aside-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+  margin: 10px;
+  position: absolute;
+  top: 110px;
+}
+
+.common-interface .perfil-container {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+}
+
+.common-interface .footer {
+  background: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: calc(100vw - 240px);
+  height: 80px;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+}
+
+.common-interface .btn-footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.common-interface .content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.common-interface .btn-event {
+  z-index: -1;
+  background: #219dbc91;
+  color: white;
+  border-radius: 15px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px 15px;
+  text-align: center;
+  margin: 0 9px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+}
+
+.common-interface .header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #d9d9d9;
+}
+
+.common-interface .search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 98%;
+  height: 40px;
+  border-radius: 20px;
+  padding: 0 10px;
+}
+
+.common-interface .filter {
+  width: 200px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+  outline: none;
+}
+
+.common-interface .filter:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.common-interface .actualuser,
+.common-interface .exit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 78%;
+  height: 60px;
+  background-color: #219dbc;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+  transition: transform 0.3s ease;
+}
+
+.common-interface .actualuser img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 10px;
+}
+
+.common-interface .exit img{
+  width: 40px;
+  height: 40px;
+  margin: 10px 20px;
+}
+
+.common-interface .actualuser p,
+.common-interface .exit  p{
+  color: white;
+  font-size: 1.2rem;
+  margin: 10px;
+}
+
+
+
+.common-interface .actualuser:hover ,.exit:hover{
+  background: #219dbc9f;
+  transform: scale(1.05);
+}
+
+
+/* Media queries para hacer el diseño responsive */
+@media (max-width: 1024px) {
+  .common-interface .menu-lateral {
+    width: 200px; /* Reduce el tamaño del menú lateral en pantallas medianas */
+  }
+  .common-interface .app-name {
+    display: none;
+  }
+
+  .common-interface .footer {
+    width: 100%;
+  }
+
+  .common-interface .home-container {
+    flex-direction: column;
+  }
+
+  .common-interface .btn-footer-container {
+    gap: 10px;
+  }
+}

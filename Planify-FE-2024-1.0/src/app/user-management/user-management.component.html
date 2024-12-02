@@ -1,0 +1,108 @@
+<div class="common-interface">
+  <div class="body">
+    <div class="main-container">
+      <app-sidebar></app-sidebar>
+
+      <div class="content">
+        <div class="header">
+          <input
+            type="text"
+            placeholder="Buscar usuarios..."
+            (input)="onSearch($event)"
+            class="search-bar"
+          />
+          
+
+          <select
+            (change)="onFilterChange($event)"
+            class="filter"
+            [(ngModel)]="selectedFilter"
+          >
+            <option value="all">Todos</option>
+            <option value="Bloqueados">Bloqueados</option>
+            <option value="Desbloqueados">Desbloqueados</option>
+            <option value="Activos">Activos</option>
+            <option value="No activos">No activos</option>
+          </select>
+          <button class="legendModal-btn" (click)="openLegendModal()">
+            <img src="../../assets/btnAyuda.png" alt="btnAyuda" />
+          </button>
+          
+        </div>
+
+        <!-- Modal para leyenda -->
+        <div class="legendModal" [ngClass]="{'show': isLegendModalOpen, 'hide': !isLegendModalOpen}">
+          <div class="legendModal-content">
+            <span class="close" (click)="closeLegendModal()">&times;</span>
+            <h2>Leyenda de colores</h2>
+            <div class='legendModal-line'></div>
+            <div class="legendModal-cards">
+              <div class="user-card user"><p>Usuario activado y desbloqueado</p></div>
+              <div class="user-card blocked"><p>Usuario activado, pero bloqueado</p></div>
+              <div class="user-card inactive"><p>Usuario sin activar</p></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contenido principal -->
+        <app-users-viewer
+        class="users-viewer-component"
+          [users]="users"
+          [selectedUser]="usuairoSeleccionado"
+          (userClick)="onUserClick($event)"
+          (filterSelect)="onFilterChange($event)"
+          (search)="onSearch($event)"
+        ></app-users-viewer>
+
+        
+
+        
+        <div class="footer">
+          <div class="btn-footer-container">
+            <div class="btn-footer-container">
+              <button
+                [ngClass]="{
+                'btn-event': !isClicked,
+                'btn': isClicked,
+              }"
+                (click)="inspectUser()"
+              >
+                Inspeccionar
+              </button>
+              <button
+                mat-raised-button
+                color="warn"
+                [ngClass]="{
+                'btn': isClicked,
+                'btn-event': !isClicked,
+              }"
+                (click)="openModalDialog('eliminar')"
+              >
+                Eliminar
+              </button>
+              <button
+                [ngClass]="{
+                'btn': isClicked,
+                'btn-event': !isClicked,
+              }"
+                [style.minWidth.px]="160" 
+                (click)="openModalDialog(btnBloquear)"
+              >
+                {{ btnBloquear }}
+              </button>
+              <button
+                [ngClass]="{
+                'btn': isClicked,
+                'btn-event': !isClicked,
+              }"
+              (click)="gestionarAusencias()"
+              >
+                Ausencias
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

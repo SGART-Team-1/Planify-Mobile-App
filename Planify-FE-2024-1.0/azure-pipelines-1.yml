@@ -1,0 +1,65 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  name: local_agent
+
+stages:
+
+- stage: Install_Nodejs
+  jobs:
+  - job:
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: "20.x"
+      displayName: "Install Node.js"
+
+- stage: Clean_cache
+  jobs:
+  - job:
+    steps:
+    - script: |
+        if exist node_modules rmdir /s /q node_modules
+
+- stage: Install_dependencies
+  jobs:
+  - job:
+    steps:
+    - checkout: none
+    - script: npm ci 
+    - script: npm install -g firebase-tools
+    - script: echo Install dependecies ok!
+
+- stage: Build_Angular_proyect
+  jobs:
+  - job:
+    steps:
+    - checkout: none
+    - script: ng build --configuration production
+    - script: echo Building!
+
+- stage: Install_SonarQube_Scanner
+  jobs:
+  - job:
+    steps:
+    - checkout: none
+    - script: npm install -g sonar-scanner
+    - script: echo Install SonarQube Scanner ok!
+
+- stage: Sonar_scanner 
+  jobs:
+  - job:
+    steps:
+    - checkout: none
+    - script: sonar-scanner -D sonar.token=$(SQ_TOKEN) -D project.settings=./sonar.properties
+    - script: echo Sonar scanner ok!
+
+- stage: Deploy_on_Firebase 
+  jobs:
+  - job:
+    steps:
+    - checkout: none
+    - script: firebase deploy --token $(FIREBASE_TOKEN)

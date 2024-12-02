@@ -1,0 +1,36 @@
+{
+  "hosting": {
+    "public": "dist/planify-fe-2024/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.csr.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(js|mjs)",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/javascript"
+          }
+        ]
+      },
+      {
+        "source": "**/*.css",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "text/css"
+          }
+        ]
+      }
+    ]
+  }
+}

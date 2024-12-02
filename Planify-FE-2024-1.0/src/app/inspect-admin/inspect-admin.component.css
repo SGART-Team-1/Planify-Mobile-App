@@ -1,0 +1,346 @@
+.content {
+  flex: 1;
+  display: flex;
+  background: #b3b3b3;
+  flex-direction: column;
+  position: relative;
+}
+
+.header {
+  padding-top: 0;
+  height: auto;
+  background: none;
+  display: flex;
+  justify-content: right;
+  position: relative;
+}
+.closebtn {
+  width: 45px;
+  height: 45px;
+  margin-top: 10px;
+  margin-right: 30px;
+  cursor: pointer;
+  z-index: 1000;
+  position: absolute;
+}
+.close {
+  width: 45px;
+  height: 45px;
+}
+
+.admin-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 25px;
+  gap: 2px;
+}
+.pers_data-account-photo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.pers_data-account {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+  width: 70%;
+}
+.pd-info {
+  width: 95px;
+}
+
+.account-info {
+  width: 180px;
+  margin-left: 10px;
+}
+
+.uploadImg {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  border-radius: 100%;
+}
+
+.fieldBusiness {
+  max-height: 120px;
+  margin-bottom: 20px;
+}
+.fieldImg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  background-color: #219ebc;
+  height: 240px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+  overflow: hidden;
+}
+
+.fieldImg .foto {
+  width: 158px;
+  height: 158px;
+  object-fit: cover; /* Mantiene la relación de aspecto y recorta si es necesario */
+  object-position: center; /* Centra la imagen en el círculo */
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  border: 2px #b3b3b3;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+}
+
+.fieldImg .foto:hover {
+  transform: scale(1.2);
+}
+
+fieldset {
+  margin: 10px;
+  border: 1px solid #219ebc;
+  border-width: 5px;
+  border-radius: 25px;
+  background: #d9d9d9;
+  width: calc(100% - 140px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+}
+
+.inside-fieldset {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  padding-bottom: 15px;
+}
+.pd-account-inside-fieldset {
+  flex-direction: column;
+  gap: 10px;
+}
+.business-inside-fieldset {
+  flex-direction: row;
+  gap: 20px;
+}
+
+.admin-small-fields {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  gap: 20px;
+}
+
+.areaBusiness {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.center-internal-info {
+  width: 126px;
+}
+
+.footer {
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: calc(
+    100vw - 240px
+  ); /* Ajusta el ancho restando el ancho del menú lateral */
+  color: white;
+  position: absolute;
+  z-index: 1; /* Menor z-index para estar debajo del menú lateral */
+}
+
+legend {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #219ebc;
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+}
+strong {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #219ebc;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+}
+
+input {
+  width: 280px;
+  padding: 10px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border: 3px solid #219ebc;
+  height: 35px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+  transition: border-color 0.3s, background-color 0.3s;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+input:hover {
+  border: 3px solid #023047;
+}
+
+
+.input-business {
+  width: 300px;
+  padding: 15px;
+}
+
+.input-checkbox {
+  padding: 15px;
+  width: 100px;
+  border: 3px solid #219ebc;
+  border-radius: 15px;
+  box-shadow: none;
+}
+
+.input-checkbox-disabled {
+  padding: 15px;
+  width: 100px;
+  border: 3px solid #219ebc;
+  border-radius: 15px;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.container {
+  cursor: pointer;
+}
+
+.container input {
+  display: none;
+}
+
+.container svg {
+  overflow: visible;
+}
+
+.path {
+  fill: none;
+  stroke: rgb(1, 141, 255);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
+  stroke-dasharray: 241 9999999;
+  stroke-dashoffset: 0;
+  
+}
+
+.container input:checked ~ svg .path {
+  pointer-events: none;
+  stroke-dasharray: 70.5096664428711 9999999;
+  stroke-dashoffset: -262.2723388671875;
+}
+
+
+span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  gap: 40px;
+  overflow: hidden;
+}
+
+.btn-footer,
+.btn {
+  background: #219ebc;
+  color: white;
+  border-radius: 15px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 17px 20px;
+  text-align: center;
+  margin: 0 9px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+  transition: transform 0.3s ease;
+}
+
+.btn-footer:hover {
+  background: #219dbc9f;
+  transform: scale(1.1);
+}
+
+.adminImage {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 2px #d9d9d9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+  margin: 0 10px;
+  transition: transform 0.3s ease;
+  object-fit: cover;
+  object-position: center;
+}
+
+.adminImage:hover {
+  transform: scale(1.2);
+}
+
+.uploadBtn {
+  all: unset;
+  width: 200px;
+  margin: 10px;
+}
+
+.compulsory-icon {
+  width: 24px;
+  height: 14px;
+  margin-bottom: 35px;
+  margin-right: -10px;
+}
+.discharge_date_icon {
+  margin-bottom: 60px;
+}
+
+.validation-icon {
+  position: absolute;
+  right: 10px;
+  align-self: center;
+  display: flex;
+  z-index: 1000;
+  width: 25px;
+}
+/* Estilo cuando el input es inválido */
+.input-invalid {
+  border: 3px solid red;
+  background-color: #ffe6e6;
+}
+
+/* Estilo cuando el input es válido (opcional) */
+.input-valid {
+  border: 3px solid green;
+  background-color: #e6ffe6;
+}

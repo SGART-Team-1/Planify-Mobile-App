@@ -1,0 +1,68 @@
+<div class="common-interface">
+<div class="body">
+  <div class="main-container">
+    <app-sidebar></app-sidebar>
+    <div class="content">
+      <div class="header">
+        <h3 class="titulo">Selección de bloques de horarios laborales</h3>
+      </div>
+      <!-- Contenido principal -->
+      
+      <div class="scroll-container">
+        <div class="bloque-container" *ngFor="let block of blocks; let i = index">
+          
+           <h4>Bloque {{i+1}}</h4>
+           <input [ngClass]="{'blockName':scheduleRegistered,'noBlockName':!scheduleRegistered}" type="blockName" [(ngModel)]="block.blockName"  placeholder="Nombre del bloque" [disabled]="scheduleRegistered" />
+           
+           <div class="time-section">
+             <div class="time-block">
+               <h4>Desde</h4>
+               <input [ngClass]="{'startHour':scheduleRegistered,'noStartBlock':!scheduleRegistered}" type="time" [(ngModel)]="block.startHour"  (ngModelChange)="verifyFields()" (ngModelChange)="validateBlock(i)" [disabled]="scheduleRegistered"/>
+             </div>
+             <div class="time-block">
+               <h4>Hasta</h4>
+               <input [ngClass]="{'startHour':scheduleRegistered,'noStartBlock':!scheduleRegistered}" type="time" [(ngModel)]="block.endHour"  (ngModelChange)="verifyFields()" (ngModelChange)="validateBlock(i)" [disabled]="scheduleRegistered"/>
+             </div>
+            </div>
+          
+        </div>
+      </div>
+      
+      
+      <div class="footer">
+        <div class="btn-footer-container" *ngIf="!scheduleRegistered" >
+          <button
+              [ngClass]="{
+                'btn-allow-confirm': isClicked,
+                'btn-event': !isClicked
+              }"
+              [disabled]="!isClicked"  (click)="openConfirmDialog()"
+              
+            >
+              Confirmar Horarios
+            </button>
+
+          <button class="btn-footer" (click)="addBlock()">Añadir Bloque</button>
+          <button class="btn-footer" (click)="removeBlock()">Quitar Bloque</button>
+        </div>
+        
+
+            <div *ngIf="!scheduleRegistered" >
+            
+            </div>
+            <!-- Mostrar mensaje si ya hay horarios registrados -->
+            <div *ngIf="scheduleRegistered" >
+              <p class="scheduleRegister">Horarios ya registrados. No es posible modificarlos.</p>
+            </div>
+    
+        
+      </div>
+    
+    
+    
+     
+      
+    </div>
+  </div>
+</div>
+</div>

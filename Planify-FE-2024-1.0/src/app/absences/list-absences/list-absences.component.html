@@ -1,0 +1,30 @@
+
+
+      <div class="container">
+          <div *ngIf="absences.length > 0">
+            <h1>Listado de ausencias de {{user.name}}</h1>
+            
+            <div class="absence-list">
+                <ul>
+                  <li *ngFor="let absence of absences">
+                    <strong>Todo el día:</strong> {{ absence.allDayLong ? 'Sí' : 'No' }} <br>
+                    <strong>Desde:</strong> {{ absence.fromDateTime }} <br>
+                    <strong>Hasta:</strong> {{ absence.toDateTime }} <br>
+                    <strong>Tipo:</strong> {{ absence.absenceType }}
+                      <button (click)="deleteAbsence(absence.id)" class="delete-btn">
+                        <img class="delete" src="../../assets/deleteImage.png" alt="delete" />
+                      </button>
+                  </li>
+                </ul>
+            </div>
+          </div>
+          <div *ngIf="absences.length === 0">
+            <h1>{{user.name}} no tiene ninguna ausencia</h1>
+          </div>
+
+          
+          <div class="error-message">
+            <span style="color: red"> {{error}} </span>
+        </div>
+      </div>
+    

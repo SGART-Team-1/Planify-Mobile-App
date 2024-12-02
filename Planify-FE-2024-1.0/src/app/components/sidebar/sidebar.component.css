@@ -1,0 +1,98 @@
+.menu-lateral {
+  height: 100dvh;
+  width: 240px;
+  background: #023047;
+  color: white;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease-in-out;
+}
+
+.home-container {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  position: absolute;
+  top: 0;
+}
+
+.app-name {
+  font-size: 2rem;
+  padding: 20px 20px 20px 10px;
+  color: white;
+  margin: 0;
+}
+
+.logo {
+  width: 95px;
+  height: 95px;
+  padding: 10px;
+}
+
+.sidebar__nav {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+}
+
+.sidebar__item.active {
+  background: #f6aa3b;
+  color: #023047;
+}
+
+.btn {
+  background: #219ebc;
+  color: white;
+  border-radius: 15px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  padding: 17px 20px;
+  text-align: center;
+  margin: 0 9px;
+}
+
+.perfil-container {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+}
+
+.actualuser {
+  cursor: pointer;
+}
+
+.actualuser.active {
+  background: #f6aa3b;
+  color: #023047;
+}
+
+.actualuser.active p {
+  color: #023047;
+  font-weight: bold;
+}
+
+.exit {
+  cursor: pointer;
+}
+
+.actualUserImg{
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Media queries para hacer el diseño responsive */
+@media (max-width: 1024px) {
+  .menu-lateral {
+    width: 200px; /* Reduce el tamaño del menú lateral en pantallas medianas */
+  }
+}
+

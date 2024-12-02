@@ -1,0 +1,25 @@
+.btn{
+    display: flex;
+    gap: 20px;
+}
+
+button{
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #f0f0f0;
+}
+
+ul {
+    list-style-type: disc; /* Muestra puntos */
+    padding-left: 20px; /* Añade espacio a la izquierda */
+}
+
+li {
+    display: list-item; /* Muestra los puntos en el estilo de lista */
+    margin-left: 0;     /* Asegúrate de que no haya margen adicional */
+}

@@ -1,0 +1,272 @@
+.body {
+  background: linear-gradient(
+    90deg,
+    rgba(2, 48, 71, 1) 1%,
+    rgba(33, 158, 188, 1) 62%
+  );
+  font-family: sans-serif;
+  margin: 0;
+  height: 100dvh;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.app-name {
+  font-size: 2rem;
+  font-family: Stencil Std, fantasy;
+  font-weight: 200;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  justify-content: center;
+  margin: auto;
+}
+
+.logo:hover {
+  transform: translateY(-3px);
+  cursor: pointer;
+}
+
+.formulario {
+  background-color: #d9d9d9;
+  padding: 20px; /* Espacio interno alrededor del contenido */
+  border-radius: 15px; /* Bordes redondeados para el formulario */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente los inputs */
+  width: 550px; /* Ajustar el ancho del formulario */
+  margin: auto; /* Centrar el formulario en la pantalla */
+  gap: 15px;
+}
+
+.email {
+  margin-bottom: 20px; /* Espacio entre los inputs */
+}
+.info-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: end;
+  width: 100%;
+  height: 100%; /* Espacio entre los inputs */
+
+  margin-bottom: 30px;
+}
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.showPwd {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  margin-bottom: 4px;
+}
+
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password {
+  width: 100%;
+  padding-right: 40px; /* Espacio suficiente para el botón */
+}
+
+.show-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.iniciar-sesion {
+  width: 100%;
+  background-color: black;
+  color: rgb(255, 255, 255);
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.199);
+
+  outline: none;
+  cursor: pointer;
+  border: none;
+  padding: 0.9rem 2rem;
+  font-family: inherit;
+  font-size: inherit;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.05rem;
+  font-weight: 700;
+  overflow: hidden;
+}
+
+.iniciar-sesion span {
+  position: relative;
+  z-index: 10;
+  transition: color 0.4s;
+  font-size: 1.2rem;
+}
+
+.iniciar-sesion:hover span {
+  color: rgb(255, 255, 255);
+}
+
+.iniciar-sesion::before,
+.iniciar-sesion::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.iniciar-sesion::before {
+  content: "";
+  background: #219ebc;
+  width: 120%;
+  left: -10%;
+  transform: skew(30deg);
+  transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+
+.iniciar-sesion:hover::before {
+  transform: translate3d(100%, 0, 0);
+}
+
+.btn-event {
+  width: 100%;
+  background-color: #505050; /* CAMBIAR COLOR */
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.199);
+}
+
+
+
+.buttonNotallowed {
+  border-radius: 15px;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px 20px;
+  width: 100%;
+  background-color: #212121;
+  border: none;
+  font: inherit;
+  color: #e8e8e8;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: not-allowed;
+  overflow: hidden;
+  transition: all 0.3s ease cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.buttonNotallowed span {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+
+.buttonNotallowed::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  translate: 0 105%;
+  background-color: #F53844;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.buttonNotallowed svg {
+  width: 32px;
+  height: 32px;
+  fill: #F53844;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.buttonNotallowed:hover {
+  animation: shake 0.2s linear 1;
+}
+
+.buttonNotallowed:hover::before {
+  translate: 0 0;
+}
+
+.buttonNotallowed:hover svg {
+  fill: #e8e8e8;
+}
+
+@keyframes shake {
+  0% {
+    rotate: 0deg;
+  }
+
+  33% {
+    rotate: 3deg;
+  }
+
+  66% {
+    rotate: -3deg;
+  }
+
+  100% {
+    rotate: 3deg;
+  }
+}
+
+
+
+a {
+  text-decoration: none;
+  color: #219ebc;
+  cursor: pointer;
+}
+
+.error-message {
+  color: rgb(255, 0, 0);
+  font-size: 1.2rem;
+  margin-top: 30px;
+  text-align: center;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.199);
+}

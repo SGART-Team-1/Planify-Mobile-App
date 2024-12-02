@@ -1,0 +1,265 @@
+<div class="common-interface">
+    <div class="body">
+      <div class="main-container">
+        <app-sidebar></app-sidebar>
+        <div class="content">
+          <!-- Contenido principal -->
+          <div class="header">
+            <button class="closebtn" (click)="closeWindow()">
+              <img class="close" src="../../assets/btnCerrar.png" alt="Close" />
+            </button>
+          </div>
+  
+          <div class="meeting-info">
+            <div class="general-info-photo-observations">
+                <fieldset>
+                  <legend>Información General</legend>
+                  <div class="inside-field">
+                    <div class="general-info-photo">
+                        <div class="general-info">
+                            <div class="gi-input-container">
+                              <div class="input-container input-issue">
+                                <strong>
+                                  Asunto
+                                  </strong>
+                                <input
+                                class="input-issue"
+                                type="text"
+                                [(ngModel)]="issue"
+                                placeholder="Asunto"
+                            />
+                            </div>
+                        </div>
+                            <div class="gi-input-container">
+                              <div class="input-container">
+                                <strong>
+                                  Fecha
+                                  </strong>
+                                    <input
+                                    class="input-date"
+                                    type="date"
+                                    [(ngModel)]="meetingDate"
+                                    (change)="onDateChange()"
+                                    placeholder="Fecha"
+                                />
+                              </div>
+                              <div class="input-container">
+                                <strong
+                                [ngClass]="{
+                                  'disabled':
+                                  isAllDay
+                                }">
+                                  Inicio
+                                  </strong>
+                                <input
+                                class="input-time"
+                                type="time"
+                                [(ngModel)]="meetingInitTime"
+                                (change)="onDateChange()"
+                                placeholder="Hora Inicio"
+                                [ngClass]="{
+                                  'disabled':
+                                  isAllDay
+                                }"
+                                [readonly]="isAllDay"
+                            />
+                              </div>
+                              <div class="input-container">
+                                <strong        
+                                  [ngClass]="{
+                                  'disabled':
+                                  isAllDay
+                                }">
+                                  Fin
+                                  </strong>
+                                    <input
+                                    class="input-time"
+                                    type="time"
+                                    [(ngModel)]="meetingEndTime"
+                                    (change)="onDateChange()"
+                                    placeholder="Hora Fin"
+                                    [ngClass]="{
+                                      'disabled':
+                                      isAllDay
+                                    }"
+                                    [readonly]="isAllDay"
+                                />
+                                </div>
+                              <div class="input-container all-day"
+                              >
+                                <strong> Día Completo</strong>
+                                <div class="checkbox-wrapper">
+                                  <input id="_checkbox-26" type="checkbox" [(ngModel)]="isAllDay" (click)="onAllDayChange()"
+                                  (change)="onDateChange()">
+                                  <label for="_checkbox-26">
+                                    <div class="tick_mark"></div>
+                                  </label>
+                                  
+                                </div>
+                                
+
+                              </div>
+                            </div>
+                            <div class="gi-input-container">
+                              <div class="input-container">
+                                <strong                                   
+                                [ngClass]="{
+                                  'disabled':
+                                  isOnline
+                                }">
+                                  Localización
+                                  </strong>
+                                  <select
+                                  type="text"
+                                  [(ngModel)]="location"
+                                  placeholder="Localización"
+                                  [ngClass]="{
+                                    'disabled':
+                                    isOnline
+                                  }"
+                                  [disabled]="isOnline">
+                                  <option value="ESI">ESI</option>
+                                  <option value="POLITECNICO">Edificio Politécnico</option>
+                                  <option value="ALU">ALU</option>
+                                  <option value="Oficina">Oficina</option>
+                                  <option value="Despacho">Despacho</option>
+                                  <option value="Biblioteca">Biblioteca</option>
+                                  <option value="Cafeteria">Cafetería</option>
+                                </select>
+                              
+                              </div>
+                              <div class="input-container all-day"
+                              >
+                                <strong>Online</strong>
+                                <div class="checkbox-wrapper">
+                                  <input id="_checkbox-location" type="checkbox" [(ngModel)]="isOnline" (click)="onOnlineChange()">
+                                  <label for="_checkbox-location">
+                                    <div class="tick_mark"></div>
+                                  </label>
+                                  
+                                </div>
+                                
+
+                              </div>
+                            </div>
+                            
+                        </div>
+                        <div class="uploadImg">
+                            <fieldset
+                              class="fieldImg"
+                            >
+                            <a class="title-organizer">Organizador</a>
+                              <img
+                                class="organizerImage"
+                                src="{{profileImage}}"
+
+                                alt="OrganizerImg"
+                              />
+                              <a>{{name}}</a>
+                              <a>{{surnames}}</a>
+                                <!-- Aquí iría el nombre del convocante -->
+                            </fieldset>
+                          </div>
+                    </div>
+                    <textarea
+                        class="input-observations"
+                        type="text"
+                        [(ngModel)]="observations"
+                        placeholder="Observaciones (Opcional)"
+                        ></textarea>
+                  </div>
+
+                </fieldset>
+  
+  
+
+            </div>
+            <div class="areaAssistants">
+              <fieldset >
+                <legend>Lista de Asistentes</legend>
+                <div class="inside-field">
+                    <div *ngIf="attendants.length > 0" class="attendants-list">
+                      <div
+                        *ngFor="let attendant of attendants"
+                        [ngClass]="{
+                          'has-absences': attendant.hasAbsences,
+                          'attendant-card': !attendant.hasAbsences 
+                        }"
+                      >
+                        <div class="attendant-info">
+                          <div class="attendant-name">
+                            <span>{{ attendant.name }} {{ attendant.surnames }}</span>
+                          </div>
+                          <div class="attendant-email">
+                            <span>{{ attendant.email }}</span>
+                          </div>
+                        </div> 
+                        <button class="bin-button" (click)="deleteAttendant(attendant.id)">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 39 7"
+                            class="bin-top"
+                          >
+                            <line stroke-width="4" stroke="white" y2="5" x2="39" y1="5"></line>
+                            <line
+                              stroke-width="3"
+                              stroke="white"
+                              y2="1.5"
+                              x2="26.0357"
+                              y1="1.5"
+                              x1="12"
+                            ></line>
+                          </svg>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 33 39"
+                            class="bin-bottom"
+                          >
+                            <mask fill="white" id="path-1-inside-1_8_19">
+                              <path
+                                d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z"
+                              ></path>
+                            </mask>
+                            <path
+                              mask="url(#path-1-inside-1_8_19)"
+                              fill="white"
+                              d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
+                            ></path>
+                            <path stroke-width="4" stroke="white" d="M12 6L12 29"></path>
+                            <path stroke-width="4" stroke="white" d="M21 6V29"></path>
+                          </svg>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 89 80"
+                            class="garbage"
+                          >
+                            <path
+                              fill="white"
+                              d="M20.5 10.5L37.5 15.5L42.5 11.5L51.5 12.5L68.75 0L72 11.5L79.5 12.5H88.5L87 22L68.75 31.5L75.5066 25L86 26L87 35.5L77.5 48L70.5 49.5L80 50L77.5 71.5L63.5 58.5L53.5 68.5L65.5 70.5L45.5 73L35.5 79.5L28 67L16 63L12 51.5L0 48L16 25L22.5 17L20.5 10.5Z"
+                            ></path>
+                          </svg>
+                        </button>
+                        
+                      </div>
+                    </div>
+                </div>
+              
+              </fieldset>
+            </div>
+          </div>
+  
+          <div class="footer">
+              <div class="btn-footer-container">
+                <button class="btn" (click)="closeWindow()">Cancelar</button>
+                <button class="btn" (click)="openModalDialog()">Añadir Asistentes</button>
+                <button class="btn" (click)="callMeeting()">Convocar Reunión</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

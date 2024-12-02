@@ -1,0 +1,307 @@
+<div class="common-interface">
+  <div class="body">
+    <div class="main-container">
+      <app-sidebar></app-sidebar>
+      <div class="content">
+        <!-- Contenido principal -->
+        <div class="header">
+          <button class="closebtn" (click)="closeWindow()">
+            <img class="close" src="../../assets/btnCerrar.png" alt="Close" />
+          </button>
+        </div>
+
+        <div class="admin-form">
+          <div class="personal-info">
+            <fieldset id="name-surnames">
+              <legend>Datos Personales</legend>
+              <div class="inside-fieldset pd-account-inside-fieldset">
+                <div class="compulsory-input-business small-input">
+                <input
+                  class="name small-input"
+                  type="text"
+                  id="name"
+                  name="name"
+                  [(ngModel)]="name"
+                  placeholder="Nombre"
+                  (input)="validateName()"
+                  [ngClass]="{
+                    'input-invalid': isInvalidName && !isEmptyName,
+                    'input-valid': !isInvalidName && name && !isEmptyName
+                  }"
+                  required
+                />
+                <span class="validation-icon">
+                  <span
+                    *ngIf="isInvalidName && !isEmptyName"
+                    class="error-message"
+                    title="Nombre no válido"
+                  >
+                    <img
+                      class="error-icon"
+                      src="../../assets/register/wrong.png"
+                      alt="Wrong"
+                    />
+                  </span>
+                </span>
+                </div>
+                <div class="compulsory-input-business big-input">
+                <input
+                  class="surnames big-input"
+                  type="text"
+                  id="surnames"
+                  name="surnames"
+                  [(ngModel)]="surnames"
+                  placeholder="Apellidos"
+                  (input)="validateSurnames()"
+                  [ngClass]="{
+                    'input-invalid': isInvalidSurnames && !isEmptySurnames,
+                    'input-valid':
+                      !isInvalidSurnames && surnames && !isEmptySurnames
+                  }"
+                  required
+                />
+                <span class="validation-icon">
+                  <span
+                    *ngIf="isInvalidSurnames && !isEmptySurnames"
+                    class="error-message"
+                    title="Apellidos no válidos"
+                  >
+                    <img
+                      class="error-icon"
+                      src="../../assets/register/wrong.png"
+                      alt="Wrong"
+                    />
+                  </span>
+                </span>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="cuenta-imagen">
+            <div class="cuenta">
+              <fieldset class="fieldset-email-pwd" id="email-pwd">
+                <legend>Cuenta</legend>
+                <div class="inside-fieldset pd-account-inside-fieldset">
+                  <div class="email-pwds-image">
+                    <div class="email-pwds">
+                      <div class="compulsory-input-business big-input">
+                        <span
+                          class="compulsory-message"
+                          title="Campo obligatorio"
+                        >
+                        </span>
+                        <div class="compulsory-input-business big-input">
+                          <input
+                            class="big-input"
+                            type="email"
+                            id="email"
+                            name="email"
+                            [(ngModel)]="email"
+                            placeholder="Correo Electrónico"
+                            (input)="validateEmail()"
+                            [ngClass]="{
+                              'input-invalid': isInvalidEmail && !isEmptyEmail,
+                              'input-valid':
+                                !isInvalidEmail && email && !isEmptyEmail
+                            }"
+                            required
+                          />
+                          <span class="validation-icon">
+                            <span
+                              *ngIf="isInvalidEmail && !isEmptyEmail"
+                              class="error-message"
+                              title="Correo no válido"
+                            >
+                              <img
+                                class="validation-icon-Account error-icon-pwd"
+                                src="../../assets/register/wrong.png"
+                                alt="Wrong"
+                              />
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="compulsory-input-business big-input">
+                        <input
+                          class="big-input"
+                          [type]="showPassword ? 'text' : 'password'"
+                          id="pwd1"
+                          name="pwd1"
+                          [(ngModel)]="pwd1"
+                          placeholder="Contraseña"
+                          (input)="validatePassword()"
+                          [ngClass]="{
+                            'input-invalid':
+                              isInvalidPassword && !isEmptyPassword,
+                            'input-valid':
+                              !isInvalidPassword && pwd1 && !isEmptyPassword
+                          }"
+                          required
+                        />
+                        <span class="validation-icon v-icon-pwd1">
+                          <span
+                            *ngIf="isInvalidPassword && !isEmptyPassword"
+                            class="error-message"
+                            title="La contraseña debe contener al menos:
+      - 8 caracteres mínimo
+      - 1 mayúscula
+      - 1 minúscula
+      - 1 carácter especial
+      - 1 número"
+                          >
+                            <img
+                              class="validation-icon-Account error-icon-pwd"
+                              src="../../assets/register/wrong.png"
+                              alt="Wrong"
+                            />
+                          </span>
+                          <span
+                            *ngIf="!isInvalidPassword && !isEmptyPassword"
+                            class="error-message"
+                            title="Contraseña válida"
+                          >
+                            <img
+                              class="validation-icon-Account right-icon"
+                              src="../../assets/register/right.png"
+                              alt="Right"
+                            />
+                          </span>
+                        </span>
+                        <button
+                          class="show-password"
+                          (click)="showPassword = !showPassword"
+                          type="button"
+                        >
+                          <img
+                            class="showPwd"
+                            [src]="
+                              showPassword
+                                ? '../../assets/verContraseña.png'
+                                : '../../assets/NOverContraseña.png'
+                            "
+                            alt="ShowPassword"
+                          />
+                        </button>
+                      </div>
+                      <div class="compulsory-input-business big-input">
+                        <input
+                          class="big-input"
+                          [type]="showPassword ? 'text' : 'password'"
+                          placeholder="Confirmar Contraseña"
+                          id="pwd2"
+                          name="pwd2"
+                          [(ngModel)]="pwd2"
+                          (input)="validatePassword2()"
+                          [ngClass]="{
+                            'input-invalid':
+                              isInvalidPassword2 && !isEmptyPassword2,
+                            'input-valid':
+                              !isInvalidPassword2 && pwd2 && !isEmptyPassword2
+                          }"
+                          required
+                        />
+                        <span class="validation-icon">
+                          <span
+                            *ngIf="
+                              isInvalidPassword2 && !isEmptyPassword2 
+                            "
+                            class="error-message"
+                            title="No coincide con la contraseña"
+                          >
+                            <img
+                              class="validation-icon-Account error-icon-pwd"
+                              src="../../assets/register/wrong.png"
+                              alt="Wrong"
+                            />
+                          </span>
+                          <span
+                            *ngIf="
+                              !isInvalidPassword2 && !isEmptyPassword2 
+                            "
+                            class="error-message"
+                            title="Contraseña válida"
+                          >
+                            <img
+                              class="validation-icon-Account right-icon"
+                              src="../../assets/register/right.png"
+                              alt="Right"
+                            />
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <div class="uploadImg">
+              <img class="adminImage" [src]="profileImageUrl" alt="AdminImg" />
+              <input
+                type="file"
+                id="profilePic"
+                (change)="onFileSelected($event)"
+                accept="image/*"
+                style="display: none"
+              />
+              <button
+                type="file"
+                class="btn submitImageButton"
+                (click)="triggerFileInput()"
+              >
+                Subir Imagen
+              </button>
+            </div>
+          </div>
+          <div class="empresa">
+            <fieldset class="fieldBusiness">
+              <legend>Empresa</legend>
+              <div class="inside-fieldset business-inside-fieldset">
+                <input
+                  [ngClass]="{
+                    'input-invalid':
+                      !isEmptyCenter,
+                    'input-valid':
+                      center && !isEmptyCenter
+                  }"
+                  (input)="validateCenter()"
+                  type="text"
+                  id="center"
+                  name="center"
+                  [(ngModel)]="center"
+                  placeholder="Centro"
+                  (change)="checkFormValidity()"
+                  required
+                />
+                <span
+                  class="help-icon"
+                  title="Centro al que pertenece dentro de la empresa"
+                >
+                </span>
+                <div class="checkbox-container">
+                  <label class="container1">
+                    <input type="checkbox"
+                    [(ngModel)]="interno">
+
+                    <svg viewBox="0 0 64 64" height="2em" width="2em">
+                      <path d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16" pathLength="575.0541381835938" class="path"></path>
+                    </svg>
+                  </label>
+                  <label for="internalCheckbox">Administrador Interno</label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="admin-info">
+          <div class="footer">
+            <div class="btn-footer-container">
+              <button class="btn" (click)="crearAdmin()">Crear</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

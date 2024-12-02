@@ -1,0 +1,15 @@
+<div class="common-interface">
+      <div class="calendar-container">
+        <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+      </div>
+      <div class="footer">
+        <div class="btn-footer-container">
+          <button class="btn" (click)="crearReunion()" >Convocar</button>
+          <!--<button (click)="inspeccionarReunion()" [ngClass]="{
+            'btn-event': !isClicked,
+            'btn': isClicked,
+          }">Inspeccionar</button>  -->
+          <button class="btn" (click)="openLegendCalendarModal()" >Leyenda</button>
+        </div>
+      </div>
+</div>

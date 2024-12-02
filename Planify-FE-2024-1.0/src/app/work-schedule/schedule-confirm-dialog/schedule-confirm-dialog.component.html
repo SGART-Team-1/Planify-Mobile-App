@@ -1,0 +1,22 @@
+<h2 mat-dialog-title *ngIf="!data.error">
+    ¿Está seguro?</h2>
+    <h2 mat-dialog-title *ngIf="data.error">
+      Error!</h2>
+<mat-dialog-content>
+  <p>{{ data.message }}</p>
+</mat-dialog-content>
+<mat-dialog-actions class="btn" >
+  
+    <button mat-button color="warn" (click)="onCancel()"*ngIf="data.error">Cerrar</button>
+  
+
+  
+  <button mat-button (click)="onCancel()" *ngIf="!data.error" >Cancelar</button>
+  <button mat-button color="warn" class="eliminar" (click)="onConfirm()" *ngIf="!data.error" >Confirmar</button>
+
+ 
+
+</mat-dialog-actions>
+
+
+

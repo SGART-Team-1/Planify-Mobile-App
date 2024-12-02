@@ -1,0 +1,22 @@
+<mat-card>
+    <mat-card-content class="content">
+        <div class="inside-field">
+            <div class="title">Motivos del rechazo</div>
+            <div class='line'></div>
+
+            <textarea
+            type="text"
+            [(ngModel)]="reason"
+            placeholder="Razones por las que se rechaza la reunión"
+            ></textarea>
+
+        </div>
+        <div class="footer">
+            <div class="btn-footer-container">
+              <button class="btn" (click)="onCancel()">Cancelar</button>
+              <button class="btn" (click)="onConfirm()">Confirmar</button>
+          </div>
+        </div>
+
+    </mat-card-content>
+</mat-card>

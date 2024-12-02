@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>Verificación con doble factor de autenticación</h2>
+<mat-dialog-content>
+  <div class="message-qr-container">
+    <div class="message">
+      <p [innerHTML]="message"></p>
+      <input
+        *ngIf="!hasQr"
+        matInput
+        [(ngModel)]="verificationcode"
+        placeholder="Codigo de verificacion"
+      />
+    </div>
+    <div class="qr">
+      <img *ngIf="hasQr" class="qr" src="{{ qrCode }}" alt="QR Code" />
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions class="btn">
+  <div class="container">
+    <div class="btn-container">
+      <button mat-button (click)="onCancel()">Cancelar</button>
+      <button
+        *ngIf="hasQr"
+        mat-button
+        color="warn"
+        class="red"
+        (click)="onGoverify()"
+      >
+        Ya tengo mi codigo en la aplicación
+      </button>
+      <button
+        *ngIf="!hasQr"
+        mat-button
+        color="warn"
+        class="blue"
+        (click)="onVerify()"
+      >
+        Verificar
+      </button>
+    </div>
+    <div class="error">
+      <span class="error-message" style="color: red"> {{ error }} </span>
+    </div>
+  </div>
+</mat-dialog-actions>

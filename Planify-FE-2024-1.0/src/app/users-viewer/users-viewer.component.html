@@ -1,0 +1,24 @@
+<div class="users-container">
+  <div class="users-list">
+    <div
+      class="user-card"
+      *ngFor="let user of users"
+      [ngClass]="{
+        isAdminOrActiveUser:
+          (user.activated && !user.blocked && user.dtype == 'CommonUser') ||
+          user.dtype == 'Administrator',
+        isBlockedUser: user.blocked && user.dtype == 'CommonUser',
+        isInactiveUser: !user.activated && user.dtype == 'CommonUser'
+      }"
+      [class.selected]="user === selectedUser"
+      (click)="onUserClick(user)"
+    >
+      <div class="user-info">
+        <div class="text">
+          <p class="user-name">{{ user.surnames }} {{ user.name }}</p>
+          <p class="user-email">{{ user.email }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

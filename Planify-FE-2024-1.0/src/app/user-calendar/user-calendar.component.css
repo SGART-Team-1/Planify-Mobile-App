@@ -1,0 +1,26 @@
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+}
+
+.main-container {
+  display: flex;
+  flex: 1;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100dvh;
+  height: 100dvh;
+}
+
+.pruebas{
+width: 5500px;
+height: 5500px;
+background-color: #056124;
+}
