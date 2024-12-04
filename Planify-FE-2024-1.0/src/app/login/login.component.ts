@@ -41,7 +41,7 @@ export class LoginComponent {
     this.loginService.login(this.email, this.password).subscribe(
 
       resultado => {
-       
+      
         if (resultado.body.role === "CommonUser") {
           this.dialogRef = this.dialog.open(DobleFactorVerifyModalComponent, { data: { userId: resultado.body.id } });
 
