@@ -36,6 +36,15 @@
         No puedo escanear el código QR
       </button>
       <button
+        *ngIf="hasQr && showCode"
+        mat-button
+        color="warn"
+        class="red"
+        (click)="onGoverify()"
+      >
+        Ya tengo mi código en la aplicación
+      </button>
+      <button
         *ngIf="!hasQr"
         mat-button
         color="warn"
