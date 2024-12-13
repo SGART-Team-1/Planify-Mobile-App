@@ -2,8 +2,12 @@
   background: #d9d9d9;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  margin: 0;
+  width: 100%; /* Adaptable */
+  max-width: 1200px; /* Limitar ancho máximo */
+  height: auto; /* Ajuste dinámico */
+  margin: 0 auto; /* Centrar en pantalla */
+  font-size: 1.2rem;
+  overflow-x: hidden;
 }
 .header {
     height: auto;
@@ -536,4 +540,95 @@
 
 .footer{
   background: none;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .body {
+    font-size: 1rem;
+  }
+
+  .input-container,
+  .input-observations,
+  .general-info-photo {
+    width: 100%;
+  }
+
+  .gi-input-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: auto;
+    padding: 0 5px;
+  }
+
+  .meeting-info {
+    padding: 10px;
+  }
+
+  .attendants-list {
+    grid-template-columns: 1fr;
+  }
+
+  .attendant-card {
+    font-size: 0.9rem;
+  }
+
+  .general-info {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .body {
+    font-size: 0.9rem;
+    padding: 5px;
+  }
+
+  .header {
+    height: 50px;
+    padding: 0 5px;
+  }
+
+  .closebtn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .input-date,
+  .input-time,
+  .input-issue {
+    width: 100%;
+  }
+
+  .general-info-photo {
+    padding: 0 10px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .attendants-list {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .attendant-card {
+    height: 50px;
+    font-size: 0.8rem;
+    padding: 5px;
+  }
+
+  .footer {
+    height: auto;
+    padding: 10px 5px;
+  }
+
+  button {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
 }

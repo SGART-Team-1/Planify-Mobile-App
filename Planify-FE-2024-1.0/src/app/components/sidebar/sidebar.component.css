@@ -1,28 +1,104 @@
-/* General responsive styling */
-body {
-  margin: 0;
-  overflow: hidden; /* Evita scroll global */
-  display: flex;
-}
-
 .menu-lateral {
-  height: 100vh; /* Cubre toda la altura visible */
-  width: 25vw; /* Ocupa 25% del ancho de la pantalla */
+  height: auto;
+  min-height: 2015px;
+  width: 240px;
   background: #023047;
   color: white;
-  position: fixed; /* Fijado al lado izquierdo */
-  top: 0;
-  left: 0;
+  position: relative;
   z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: transform 0.3s ease-in-out;
+  overflow-y: hidden;
+}
+
+.home-container {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  position: absolute;
+  top: 0;
+}
+
+.app-name {
+  font-size: 2rem;
+  padding: 20px 20px 20px 10px;
+  color: white;
+  margin: 0;
+}
+
+.logo {
+  width: 95px;
+  height: 95px;
+  padding: 10px;
+}
+
+.sidebar__nav {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+}
+
+.sidebar__item.active {
+  background: #f6aa3b;
+  color: #023047;
+}
+
+.btn {
+  background: #219ebc;
+  color: white;
+  border-radius: 15px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  padding: 17px 20px;
+  text-align: center;
+  margin: 0 9px;
+}
+
+.perfil-container {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+}
+
+.actualuser {
+  cursor: pointer;
+}
+
+.actualuser.active {
+  background: #f6aa3b;
+  color: #023047;
+}
+
+.actualuser.active p {
+  color: #023047;
+  font-weight: bold;
+}
+
+.exit {
+  cursor: pointer;
+}
+
+.actualUserImg{
+  object-fit: cover;
+  object-position: center;
 }
 
 .notifications-container {
-  position: absolute;
-  left: 5%; /* Margen relativo para adaptarse al ancho */
-  right: 5%;
+  position: fixed;
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 5px;
+  margin-bottom: 5px;
+  margin-top: 580px;
 }
 
 .notification-button {
@@ -46,15 +122,15 @@ body {
 
 .notifications-dropdown {
   position: absolute;
-  bottom: calc(100% + 10px);
+  bottom: calc(100% + 10px); /* Cambiado para desplegar hacia arriba */
   left: 0;
   background: white;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Sombra ajustada para arriba */
   border-radius: 4px;
-  width: 90%; /* Ocupa el 90% del ancho del contenedor */
+  width: 250px;
   z-index: 1000;
   padding: 10px;
-  animation: slideUp 0.3s ease-in-out;
+  animation: slideUp 0.3s ease-in-out; /* Animación opcional */
 }
 
 @keyframes slideUp {
@@ -76,13 +152,13 @@ body {
 
 .notifications-dropdown li {
   position: relative;
-  padding: 10px 10%; /* Márgenes proporcionales */
+  padding: 10px 40px 10px 10px;
   border-bottom: 1px solid #ddd;
   color: black;
-  font-size: 0.9rem; /* Tamaño relativo */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 12px;
+  white-space: nowrap; /* Evita que el texto ocupe múltiples líneas */
+  overflow: hidden; /* Oculta el texto que no cabe */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos si el texto es demasiado largo */
   cursor: pointer;
 }
 
@@ -92,7 +168,7 @@ body {
 
 .delete-button {
   position: absolute;
-  right: 10%; /* Posición relativa al ancho */
+  right: 10px; /* Ubicación en la parte derecha */
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -100,13 +176,13 @@ body {
   color: red;
   font-size: 1rem;
   cursor: pointer;
-  visibility: hidden;
+  visibility: hidden; /* Oculta la cruz por defecto */
   transition: visibility 0.3s ease, opacity 0.3s ease;
   opacity: 0;
 }
 
 .notifications-dropdown li:hover .delete-button {
-  visibility: visible;
+  visibility: visible; /* Muestra la cruz al pasar el cursor */
   opacity: 1;
 }
 
@@ -122,19 +198,9 @@ body {
   font-weight: normal;
 }
 
-/* Media queries for additional refinement */
-@media (max-width: 768px) {
+/* Media queries para hacer el diseño responsive */
+@media (max-width: 1024px) {
   .menu-lateral {
-    width: 30vw; /* Ajuste dinámico en pantallas pequeñas */
-  }
-
-  .notifications-dropdown {
-    width: 80%; /* Reduce el ancho del dropdown en pantallas pequeñas */
-  }
-}
-
-@media (min-width: 1025px) {
-  .menu-lateral {
-    width: 25vw; /* Mantiene el 25% en pantallas grandes */
+    width: 200px; /* Reduce el tamaño del menú lateral en pantallas medianas */
   }
 }
