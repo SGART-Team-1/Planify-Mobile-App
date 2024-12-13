@@ -7,11 +7,18 @@
         *ngIf="!hasQr"
         matInput
         [(ngModel)]="verificationcode"
-        placeholder="Codigo de verificacion"
+        placeholder="Código de verificación"
       />
     </div>
     <div class="qr">
-      <img *ngIf="hasQr" class="qr" src="{{ qrCode }}" alt="QR Code" />
+      <!-- Mostrar imagen del QR si existe -->
+      <img *ngIf="hasQr && !showCode" class="qr" src="{{ qrCode }}" alt="QR Code" />
+      <!-- Mostrar código secreto como texto alternativo -->
+      <p *ngIf="hasQr && showCode">
+        Si estás configurando en este mismo dispositivo, usa este código:
+        <strong>{{ secretKey }}</strong>
+        <button mat-button (click)="copyToClipboard()">Copiar código</button>
+      </p>
     </div>
   </div>
 </mat-dialog-content>
@@ -20,13 +27,13 @@
     <div class="btn-container">
       <button mat-button (click)="onCancel()">Cancelar</button>
       <button
-        *ngIf="hasQr"
+        *ngIf="hasQr && !showCode"
         mat-button
         color="warn"
         class="red"
-        (click)="onGoverify()"
+        (click)="toggleCodeView()"
       >
-        Ya tengo mi codigo en la aplicación
+        No puedo escanear el código QR
       </button>
       <button
         *ngIf="!hasQr"
