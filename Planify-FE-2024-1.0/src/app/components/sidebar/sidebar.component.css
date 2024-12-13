@@ -1,98 +1,140 @@
+/* General responsive styling */
+body {
+  margin: 0;
+  overflow: hidden; /* Evita scroll global */
+  display: flex;
+}
+
 .menu-lateral {
-  height: 100dvh;
-  width: 240px;
+  height: 100vh; /* Cubre toda la altura visible */
+  width: 25vw; /* Ocupa 25% del ancho de la pantalla */
   background: #023047;
   color: white;
-  position: relative;
+  position: fixed; /* Fijado al lado izquierdo */
+  top: 0;
+  left: 0;
   z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.3s ease-in-out;
 }
 
-.home-container {
-  display: flex;
-  align-items: center;
-  margin: 0 10px;
+.notifications-container {
   position: absolute;
-  top: 0;
+  left: 5%; /* Margen relativo para adaptarse al ancho */
+  right: 5%;
 }
 
-.app-name {
-  font-size: 2rem;
-  padding: 20px 20px 20px 10px;
-  color: white;
-  margin: 0;
-}
-
-.logo {
-  width: 95px;
-  height: 95px;
-  padding: 10px;
-}
-
-.sidebar__nav {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: center;
-  gap: 40px;
-}
-
-.sidebar__item.active {
-  background: #f6aa3b;
-  color: #023047;
-}
-
-.btn {
-  background: #219ebc;
-  color: white;
-  border-radius: 15px;
-  cursor: pointer;
-  letter-spacing: 2px;
-  font-size: 1rem;
-  padding: 17px 20px;
-  text-align: center;
-  margin: 0 9px;
-}
-
-.perfil-container {
-  margin-bottom: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 40px;
+.notification-button {
+  background: none;
+  border: none;
   position: relative;
-}
-
-.actualuser {
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
-.actualuser.active {
-  background: #f6aa3b;
-  color: #023047;
+.notification-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  padding: 2px 6px;
 }
 
-.actualuser.active p {
-  color: #023047;
-  font-weight: bold;
+.notifications-dropdown {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 0;
+  background: white;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  width: 90%; /* Ocupa el 90% del ancho del contenedor */
+  z-index: 1000;
+  padding: 10px;
+  animation: slideUp 0.3s ease-in-out;
 }
 
-.exit {
-  cursor: pointer;
-}
-
-.actualUserImg{
-  object-fit: cover;
-  object-position: center;
-}
-
-/* Media queries para hacer el diseño responsive */
-@media (max-width: 1024px) {
-  .menu-lateral {
-    width: 200px; /* Reduce el tamaño del menú lateral en pantallas medianas */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+.notifications-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notifications-dropdown li {
+  position: relative;
+  padding: 10px 10%; /* Márgenes proporcionales */
+  border-bottom: 1px solid #ddd;
+  color: black;
+  font-size: 0.9rem; /* Tamaño relativo */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.notifications-dropdown li:last-child {
+  border-bottom: none;
+}
+
+.delete-button {
+  position: absolute;
+  right: 10%; /* Posición relativa al ancho */
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: red;
+  font-size: 1rem;
+  cursor: pointer;
+  visibility: hidden;
+  transition: visibility 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.notifications-dropdown li:hover .delete-button {
+  visibility: visible;
+  opacity: 1;
+}
+
+.unread {
+  background-color: white;
+  color: black;
+  font-weight: normal;
+}
+
+.read {
+  background-color: #f0f0f0;
+  color: #888;
+  font-weight: normal;
+}
+
+/* Media queries for additional refinement */
+@media (max-width: 768px) {
+  .menu-lateral {
+    width: 30vw; /* Ajuste dinámico en pantallas pequeñas */
+  }
+
+  .notifications-dropdown {
+    width: 80%; /* Reduce el ancho del dropdown en pantallas pequeñas */
+  }
+}
+
+@media (min-width: 1025px) {
+  .menu-lateral {
+    width: 25vw; /* Mantiene el 25% en pantallas grandes */
+  }
+}
