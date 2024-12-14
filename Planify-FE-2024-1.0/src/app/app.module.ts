@@ -9,6 +9,7 @@ import { UsersViewerComponent } from './users-viewer/users-viewer.component';
 import { AddAbsenceComponent } from './absences/add-absence/add-absence.component';
 import { MeetingCalendarComponent } from './meeting-calendar/meeting-calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     AddAbsenceComponent,
     MeetingCalendarComponent,
     FullCalendarModule,
+    IonicModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

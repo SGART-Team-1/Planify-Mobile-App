@@ -1,10 +1,9 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.planify.app',
+  appId: 'com.example.app',
   appName: 'Planify',
   webDir: 'dist/planify-fe-2024/browser',
-  bundledWebRuntime: false,
 };
 
 export default config;
