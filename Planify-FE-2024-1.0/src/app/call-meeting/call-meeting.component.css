@@ -2,17 +2,36 @@
   background: #d9d9d9;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  margin: 0;
+  width: 100%;
+  height: 100vh; /* Usar toda la altura disponible */
+  margin: 0 auto;
+  font-size: 1rem; /* Ajustable */
+  overflow: hidden; /* Evitar scroll innecesario */
+  box-sizing: border-box;
 }
+
+.content {
+  flex: 1;
+  display: flex;
+  height: auto;
+  width: 100%;
+  background: #d9d9d9;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
 .header {
     height: auto;
+    width: 100%;
     background: none;
     display: flex;
     justify-content: right;
     position: relative;
     padding-top: 0;
   }
+
 .closebtn {
     width: 45px;
     height: 45px;
@@ -22,6 +41,7 @@
     z-index: 1000;
     position: absolute;
   }
+
   .close {
     width: 45px;
     height: 45px;
@@ -33,10 +53,14 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    width: 100%;
     gap: 2px;
   }
+
   .gi-input-container {
     display: flex;
+    height: 100%;
+    width: 100%;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -49,6 +73,8 @@
     align-items: center;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
     border-radius: 15px;
+    height: 100%;
+    width: 100%;
   }
   .general-info-photo-observations {
     display: flex;
@@ -537,3 +563,144 @@
 .footer{
   background: none;
 }
+
+@media (max-width: 480px) {
+  .body {
+    font-size: 0.8rem;
+    width: 100%;
+  }
+
+  .header {
+    height: 30px;
+    width: 100%;
+  }
+
+  .closebtn {
+    width: 20px;
+    height: 20px;
+  }
+
+  .meeting-info {
+    gap: 5px; /* Ajuste del espaciado entre elementos */
+    width: 60%; /* Reduce el ancho */
+    margin-left: -5%; /* Mueve más a la izquierda */
+    display: flex;
+    flex-direction: column; /* Organiza en columnas */
+    align-items: flex-start; /* Alineación de los elementos */
+  }
+
+  .gi-input-container {
+    gap: 5px;
+    width: 70%; /* Reduce el ancho */
+    margin-left: -5%; /* Mueve más a la izquierda */
+    display: flex;
+    flex-direction: column; /* Organiza en columnas */
+    align-items: flex-start; /* Alineación de los elementos */
+  }
+
+  .input-container {
+    max-width: 140px; /* Reduce el tamaño máximo */
+    width: 100%;
+  }
+
+  .areaAssistants {
+    width: 72%; /* Mismo ancho que Información General */
+    margin-left: 8%; /* Alineación a la izquierda */
+    display: flex;
+    flex-direction: column; /* Asegura disposición vertical */
+    align-items: flex-start; /* Alineación de los elementos hacia la izquierda */
+    gap: 5px; /* Espaciado entre los elementos */
+  }
+
+  .attendants-list {
+    display: flex;
+    width: 70%; /* Reduce el ancho */
+    height: 20%;
+    margin-left: -5%; /* Mueve más a la izquierda */
+  }
+
+  .attendant-card {
+    height: 35px;
+    width: 100%;
+    font-size: 0.6rem; /* Reduce la fuente de los elementos */
+  }
+
+  .footer {
+    padding-left: 5%;
+    font-size: 0.6rem; /* Reduce el tamaño de fuente en el footer */
+    height: 30px;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px; /* Espacio entre botones */
+  }
+
+  .footer button {
+    font-size: 0.4rem; /* Tamaño reducido de fuente del botón */
+    padding: 4px 10px; /* Menor relleno */
+    height: 25px; /* Altura reducida */
+    min-width: 60px; /* Ancho mínimo */
+    line-height: 1; /* Controla la alineación vertical del texto */
+    border-radius: 5px; /* Redondeo ajustado */
+    display: flex;
+    align-items: center; /* Centra el texto verticalmente */
+  }
+
+  .footer button:hover {
+    transform: scale(1.05); /* Efecto ligero al pasar el ratón */
+  }
+
+  .footer button:active {
+    transform: scale(0.95); /* Efecto al hacer clic */
+  }
+
+  input,
+  select,
+  textarea {
+    width: calc(100% - 10px);
+    font-size: 0.7rem; /* Reduce el tamaño de fuente de las entradas */
+  }
+
+  .general-info-photo-observations,
+  .general-info-photo,
+  .general-info {
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+    width: 70%; /* Reduce el ancho */
+    margin-left: -2%; /* Mueve más a la izquierda */
+  }
+
+  .input-observations {
+    width: 100%; /* Asegura que ocupe el ancho disponible */
+    height: 50px; /* Reduce la altura del textbox */
+    font-size: 0.7rem; /* Reduce la fuente */
+  }
+
+  label {
+    font-size: 0.5rem; /* Reduce el tamaño de fuente de las etiquetas */
+  }
+
+  .title-organizer,
+  strong {
+    font-size: 0.8rem; /* Ajusta el tamaño de fuente */
+    padding: 5px;
+  }
+
+  .fieldImg,
+  .organizerImage {
+    width: 50px; /* Reduce el tamaño de las imágenes */
+    height: 50px;
+  }
+
+  .checkbox-wrapper label {
+    --size: 15px; /* Reduce el tamaño de los checkboxes */
+  }
+
+  .bin-button {
+    width: 20px; /* Reduce el tamaño del botón */
+    height: 20px;
+  }
+}
+
