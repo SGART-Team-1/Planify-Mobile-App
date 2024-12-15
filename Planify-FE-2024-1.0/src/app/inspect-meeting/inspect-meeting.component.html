@@ -218,7 +218,7 @@
                       </div>
                       <div class="gi-input-container"*ngIf="(invitationState === 'ACEPTADA' || (isOrganizer && !isEditing) || !attendanceAvailable) && !isEditing">
                         <div *ngIf="(invitationState === 'ACEPTADA' || (isOrganizer && !isEditing) || !attendanceAvailable) && !isEditing" class="input-container all-day">
-                          <strong>Asistir</strong>
+                          <strong class="input-title">Asistir</strong>
                           <div class="checkbox-wrapper">
                             <input id="_checkbox-location" type="checkbox" [(ngModel)]="attending" (click)="onAttendingChange()" [disabled]="attending || !attendanceAvailable">
                             <label for="_checkbox-location">
@@ -238,12 +238,9 @@
                   </div>
                 </div>
               </div>
-
             </fieldset>
-  
-  
-
           </div>
+          
           <div class="areaAssistants">
               <fieldset >
               <legend>Lista de Asistentes</legend>
@@ -354,18 +351,16 @@
               
             </fieldset>
           </div>
+          <div class="foooter">
+            <button *ngIf="isOrganizer && !isEditing && state === 'ABIERTA'" class="btn" (click)="cancelMeeting()">Cancelar Reunión</button>
+            <button *ngIf="isOrganizer && !isEditing && !same_afterDay && state === 'ABIERTA'" class="btn" (click)="modifyMeeting()">Modificar Reunión</button>
+            <button *ngIf="isEditing" class="btn" (click)="cancelChanges()">Descartar</button>
+            <button *ngIf="isEditing" class="btn" (click)="saveMeeting()">Guardar</button>
+            <button *ngIf="isOrganizer && isEditing" class="btn" (click)="openModalDialogModifyAttendants()">Añadir Asistentes</button>
+            <button *ngIf="(!isOrganizer && !isEditing && invitationState === 'PENDIENTE') || (!isOrganizer && !isEditing && invitationState === 'ACEPTADA' && !attending)" class="btn" (click)="rejectMeeting()">Rechazar Invitación</button>
+            <button *ngIf="(!isOrganizer && !isEditing && invitationState === 'PENDIENTE') || (!isOrganizer && !isEditing && invitationState === 'RECHAZADA')" class="btn" (click)="acceptMeeting()">Aceptar Invitación</button>
         </div>
-        <div class="footer">
-          <div class="btn-footer-container">
-                <button *ngIf="isOrganizer && !isEditing && state === 'ABIERTA'" class="btn" (click)="cancelMeeting()">Cancelar Reunión</button>
-                <button *ngIf="isOrganizer && !isEditing && !same_afterDay && state === 'ABIERTA'" class="btn" (click)="modifyMeeting()">Modificar Reunión</button>
-                <button *ngIf="isEditing" class="btn" (click)="cancelChanges()">Descartar</button>
-                <button *ngIf="isEditing" class="btn" (click)="saveMeeting()">Guardar</button>
-                <button *ngIf="isOrganizer && isEditing" class="btn" (click)="openModalDialogModifyAttendants()">Añadir Asistentes</button>
-                <button *ngIf="(!isOrganizer && !isEditing && invitationState === 'PENDIENTE') || (!isOrganizer && !isEditing && invitationState === 'ACEPTADA' && !attending)" class="btn" (click)="rejectMeeting()">Rechazar Invitación</button>
-                <button *ngIf="(!isOrganizer && !isEditing && invitationState === 'PENDIENTE') || (!isOrganizer && !isEditing && invitationState === 'RECHAZADA')" class="btn" (click)="acceptMeeting()">Aceptar Invitación</button>
         </div>
-      </div>
     </div>
   </div>
 </div>
