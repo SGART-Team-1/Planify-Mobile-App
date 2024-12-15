@@ -50,11 +50,11 @@
   <div class="perfil-container">
     <div class="actualuser" *ngIf="actualUser.dtype == 'Administrator'" routerLink="/inspect-admin/{{actualUser.id}}" routerLinkActive="active">
       <img class="actualUserImg" src="{{actualUser.photo}}" alt="Perfil" />
-      <p class="actualUserImgName">{{ actualUser.name }}</p>
+      <p class="actualUserImgName"></p>
     </div>
     <div class="actualuser" *ngIf="actualUser.dtype == 'CommonUser'" routerLink="/inspect-user/{{actualUser.id}}" routerLinkActive="active">
       <img class="actualUserImg" src="{{actualUser.photo}}" alt="Perfil" />
-      <p class="actualUserImgName">{{ actualUser.name }}</p>
+      <p class="actualUserImgName"></p>
     </div>
     <div class="exit" *ngIf="actualUser.dtype == 'Administrator' || actualUser.dtype == 'CommonUser'" (click)="logOut()">
       <img class="exitImg" src="../../../assets/cerrarSesion.png" alt="Salir">
