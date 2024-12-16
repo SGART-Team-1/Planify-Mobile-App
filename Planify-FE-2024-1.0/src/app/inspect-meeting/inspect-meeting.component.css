@@ -1,89 +1,47 @@
-.body {
-  background: #d9d9d9;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  margin: 0;
+
+.input-issue {
+  width: 100%;
 }
-.header {
-  height: auto;
-  background: none;
-  display: flex;
-  justify-content: right;
-  position: relative;
-  padding-top: 0;
-}
-.closebtn {
-  width: 45px;
-  height: 45px;
-  margin-top: 10px;
-  margin-right: 30px;
-  cursor: pointer;
-  z-index: 1000;
-  position: absolute;
+.input-title{
+  width:120px;
 }
 .close {
   width: 45px;
   height: 45px;
 }
-
-.meeting-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  gap: 2px;
-}
 .gi-input-container {
-  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 10px;
 }
 .input-container {
   display: flex;
+  max-width: 200px;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
   border-radius: 15px;
 }
 .general-info-photo-observations {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
+  justify-content: left;
+  align-items: start;
 }
 .inside-field {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: calc(100% - 40px);
+  padding-right: 40px;
   height: 100%;
   padding-bottom: 15px;
 }
 .general-info-photo {
+  padding-top: 30px;
   display: flex;
   flex-direction: row;
+  
   justify-content: space-between;
   margin-top: -10px;
-  padding-left: 25px;
-  padding-right: 25px;
-  align-items: center;
-  width: 100%;
+  padding-left: 10px;
   height: 100%;
-}
-.general-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 700px;
-  height: 100%;
-  gap: 20px;
 }
 
 .div-row{
@@ -93,13 +51,9 @@
   width: 100%;
   gap: 20px;
 }
-.input-issue {
-  width: 100%;
-}
 .input-state{
   border-radius: 15px;
   transition: background-color 0.3s, transform 0.3s ease; 
-  text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
   width: 130px;
   cursor: default;
@@ -125,10 +79,10 @@
 }
 
 .input-date {
-  width: 140px;
+  width: 200px;
 }
 .input-time {
-  width: 90px;
+  width: 200px;
 }
 .all-day {
   background-color: #023047;
@@ -182,18 +136,18 @@
   color: #ffffff;
   background-color: #023047;
   border-radius: 15px;
-  padding: 7px;
   box-shadow: none;
 }
 .fieldImg {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: top;
   align-items: center;
   width: 135px;
+  padding: 10px 80px 10px 0px;
   background-color: #023047;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
-  overflow: hidden;
+  height: 200px;
 }
 .organizerImage {
   width: 90px;
@@ -210,26 +164,10 @@
 .organizerImage:hover {
   transform: scale(1.05);
 }
-.input-observations {
-  width: 100%;
-  border-radius: 15px;
-  height: 80px;
-  resize: none;
-  overflow-y: auto;
-  vertical-align: top;
-}
-
-.areaAssistants {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
 
 fieldset {
   margin: 5px;
-  display: flex;
-  justify-content: center;
+  justify-content: left;
   border: 1px solid #023047;
   background: #b3b3b3;
   border-width: 5px;
@@ -272,6 +210,16 @@ input {
   font-weight: bold;
   font-size: 0.8rem;
 }
+.input-invalid{
+  border: 3px solid red;
+  background-color: #ffe6e6;
+}
+
+.input-valid{
+  border: 3px solid green;
+  background-color: #e6ffe6;
+}
+
 .disabled {
   background-color: #b3b3b3;
   border: 3px solid #d9d9d9;
@@ -292,7 +240,7 @@ input:hover {
   transition: border-color 0.3s, background-color 0.3s;
   font-weight: bold;
   font-size: 0.8rem;
-  width: 250px;
+  width: 100px;
 }
 select {
   padding: 5px;
@@ -307,15 +255,6 @@ select {
 }
 select:hover {
   border: 3px solid #219ebc;
-}
-textarea {
-  padding: 5px;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  border: 3px solid #023047;
-  transition: border-color 0.3s, background-color 0.3s;
-  font-weight: bold;
-  font-size: 0.8rem;
 }
 textarea:hover {
   border: 3px solid #219ebc;
@@ -452,38 +391,10 @@ a {
   opacity: 1;
 }
 
-/*Show chosen attendants*/
-.attendants-list {
-  width: 100%;
-  height: 215px;
-  overflow-y: auto;
-  resize: none;
-  display: grid;
-  max-height: 215px;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  padding: 10px 10px 10px 10px;
-}
-
 .state-icon{
   width: 5dvh;
   height: 5dvh;
 
-}
-
-.attendant-card {
-  width: 100%;
-  height: 50px;
-  background: #023047;
-  transition: all 0.4s;
-  border-radius: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
-  display: flex;
-  justify-content: space-between;
-  padding-left: 10px;
-  padding-right: 10px;
-  align-items: center;
-  position: relative;
 }
 
 .acceptMeeting {
@@ -532,7 +443,6 @@ a {
 }
 
 .attendant-info {
-  width: calc(100% - 45px);
   height: 100%;
   font-weight: bold;
   color: #ffffff;
@@ -557,7 +467,7 @@ a {
   justify-self: center;
   opacity: 1;
   border-radius: 15px;
-  font-size: 1.05rem;
+  font-size: 10px;
 }
 
 .attendant-info:hover .attendant-name {
@@ -566,42 +476,22 @@ a {
 }
 
 .attendant-email {
-  height: 0%;
-  width: 100%;
   opacity: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 15px;
   transition: all 0.4s;
-  font-size: 0px;
+  font-size: 10px;
   transform: rotate(90deg) scale(-1);
 }
 
 .attendant-info:hover .attendant-email {
   opacity: 1;
   height: 100%;
-  font-size: 0.9rem;
   transform: rotate(0deg);
 }
 
-/* Bin Button */
-
-.bin-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background-color: rgb(255, 95, 95);
-  cursor: pointer;
-  border: 2px solid rgb(255, 201, 201);
-  transition-duration: 0.3s;
-  position: relative;
-  overflow: hidden;
-}
 .bin-bottom {
   width: 15px;
   z-index: 2;
@@ -642,7 +532,169 @@ a {
     opacity: 1;
   }
 }
+@media (max-width: 480px) {
+  .body {
+    font-size: 8px;
+    width: 100%;
+    background: #d9d9d9;
+    height: 900px; /* Usar toda la altura disponible */
+    margin: 0 auto;
+    font-size: 1rem; /* Ajustable */
+    overflow: hidden; /* Evitar scroll innecesario */
+    box-sizing: border-box;
+    margin: 0;
+  }
 
-.footer {
-  background: none;
+  .header {
+    height: 30px;
+    width: 100%;
+    background: none;
+    display: flex;
+    justify-content: right;
+    position: relative;
+    padding-top: 0;
+  }
+
+  .closebtn {
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+    margin-right: 30px;
+    cursor: pointer;
+    z-index: 1000;
+    position: relative;
+  }
+
+  .meeting-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: start;
+    height: 100%;
+    gap: 2px;
+  }
+
+  .areaAssistants {
+    display: flex-start;
+    flex-direction: column; /* Asegura disposición vertical */
+    align-items: flex-start; /* Alineación de los elementos hacia la izquierda */
+    gap: 5px; /* Espaciado entre los elementos */
+    justify-content: left;
+  }
+
+  .attendants-list {
+    height: 215px;
+    overflow-y: auto;
+    resize: none;
+    display: grid;
+    max-height: 170px;
+    gap: 10px;
+    padding: 10px 10px 10px 10px;
+  }
+
+  .attendant-card {
+    height: 50px;
+    width: 100%;
+    font-size: 0.6rem; /* Reduce la fuente de los elementos */
+    background: #023047;
+    transition: all 0.4s;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-items: center;
+    position: relative;
+  }
+
+  .foooter {
+    padding-left: 5%;
+    font-size: 1rem; /* Reduce el tamaño de fuente en el foooter */
+    width: 25%;
+    display:flex;
+    margin-top: 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Espacio entre botones */
+    background-color: transparent;
+  }
+
+  .foooter button {
+    font-size: 0.7rem; /* Tamaño reducido de fuente del botón */
+    height: 35px; /* Altura reducida */
+    min-width: 60px; /* Ancho mínimo */
+    line-height: 1; /* Controla la alineación vertical del texto */
+    border-radius: 5px; /* Redondeo ajustado */
+    display: flex;
+    align-items: center; /* Centra el texto verticalmente */
+  }
+
+  .foooter button:hover {
+transform: scale(1.05); /* Efecto ligero al pasar el ratón */
+}
+
+.foooter button:active {
+  transform: scale(0.95); /* Efecto al hacer clic */
+}
+
+input,
+select,
+textarea {
+  padding: 5px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border: 3px solid #023047;
+  transition: border-color 0.3s, background-color 0.3s;
+  font-weight: bold;  
+  width: calc(100% - 10px);
+  font-size: 0.7rem; /* Reduce el tamaño de fuente de las entradas */
+}
+
+.general-info {
+  justify-content: left;
+  width:70%; /* Reduce el ancho */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 10px;
+}
+
+.input-observations {
+  width: 200px; /* Asegura que ocupe el ancho disponible */
+  height: 70px;
+  font-size: 0.7rem; /* Reduce la fuente */
+  border-radius: 15px;
+  resize: none;
+  overflow-y: auto;
+  vertical-align: top;
+  position: relative;
+}
+
+.fieldImg,
+.organizerImage {
+  width: 50px; /* Reduce el tamaño de las imágenes */
+  height: 50px;
+}
+
+.checkbox-wrapper label {
+  --size: 15px; /* Reduce el tamaño de los checkboxes */
+}
+
+.bin-button {
+  width: 20px; /* Reduce el tamaño del botón */
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: left;
+  border-radius: 50%;
+  background-color: rgb(255, 95, 95);
+  cursor: pointer;
+  border: 2px solid rgb(255, 201, 201);
+  transition-duration: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
 }

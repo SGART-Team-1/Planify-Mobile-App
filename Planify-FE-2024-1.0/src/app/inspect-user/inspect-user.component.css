@@ -54,14 +54,6 @@ body {
   margin-top: 10px;
 }
 
-.sidebar__nav {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: center;
-  gap: 40px;
-}
-
 .btn-aside-container {
   display: flex;
   flex-direction: column;
@@ -534,6 +526,15 @@ span {
 
   .header {
     justify-content: center;
+  }
+
+  .sidebar__nav {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    height: 1000px;
   }
 
   .closebtn {

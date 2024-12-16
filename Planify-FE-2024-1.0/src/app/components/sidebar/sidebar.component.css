@@ -208,11 +208,12 @@
 
 @media (max-width: 480px) {
   .menu-lateral {
+    height: 900px;
     width: 95px; /* Reduce el tamaño del menú lateral en pantallas medianas */
   }
 
   .btn{
-    font-size: 7px;
+    font-size: 12px;
   }
 
 
