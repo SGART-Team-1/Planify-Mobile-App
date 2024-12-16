@@ -25,6 +25,7 @@
     "@angular/router": "^18.2.0",
     "@angular/ssr": "^18.2.7",
     "@capacitor/android": "^6.2.0",
+    "@capacitor/app": "^6.0.2",
     "@capacitor/cli": "^6.2.0",
     "@capacitor/core": "^6.2.0",
     "@fullcalendar/angular": "^6.1.15",
