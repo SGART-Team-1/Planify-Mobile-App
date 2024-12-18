@@ -50,8 +50,7 @@
                     </fieldset>
                   </div>
                     <div class="gi-input-container">
-                      <div class="div-row">
-                        <div class="input-container input-issue">
+                        <div class="input-container">
                           <strong class="input-title">
                             Asunto
                           </strong>
@@ -68,7 +67,6 @@
                             (change)="onIssueChange()"
                           />
                         </div>
-                      </div>
                     </div>
                     <span class="error-message" style="color: red" *ngIf="isInvalidIssue && !checkingIssue"> {{ errorIssue }} </span>
                     <div class="gi-input-container">
@@ -93,7 +91,7 @@
                     <span class="error-message" style="color: red" *ngIf="isInvalidDate && !checkingDate"> {{ errorDate }} </span>
                     <div class="gi-input-container" *ngIf="isAllDay || isEditing">
                       <div class="input-container all-day" *ngIf="isAllDay || isEditing">
-                        <strong> Día Completo</strong>
+                        <strong class="input-title"> Día Completo</strong>
                         <div class="checkbox-wrapper" >
                           <input id="_checkbox-26" type="checkbox" [(ngModel)]="isAllDay" (click)="onAllDayChange()" [disabled]=!isEditing>
                           <label for="_checkbox-26">
@@ -167,7 +165,6 @@
                   </div>
                     <div class="gi-input-container"*ngIf="!isOnline || isEditing">
                       <div class="input-container all-day"*ngIf="!isOnline || isEditing">
-                        <div *ngIf="!isOnline || isEditing" class="input-container">
                           <strong
                             [ngClass]="{
                               'disabled': isOnline,
@@ -175,28 +172,28 @@
                             }">
                             Localización
                           </strong>
-                              <select *ngIf="isEditing" 
+                            <select
                               type="text"
                               [(ngModel)]="location"
                               placeholder="Localización"
                               (change)="onLocationChange()"
                               [ngClass]="{
                                 'disabled':isOnline,
+                                'location-input': true,
                                 'input-invalid': isInvalidLocation && !checkingLocation,
                                 'input-valid': !isInvalidLocation && location && !checkingLocation
                               }"
-                              [disabled]="isOnline">
-                              <option value="ESI">ESI</option>
-                              <option value="POLITECNICO">Edificio Politécnico</option>
-                              <option value="ALU">ALU</option>
-                              <option value="Oficina">Oficina</option>
-                              <option value="Despacho">Despacho</option>
-                              <option value="Biblioteca">Biblioteca</option>
-                              <option value="Cafeteria">Cafetería</option>
+                              >
+                              <option value="ESI" [disabled]="isOnline || !isEditing">ESI</option>
+                              <option value="POLITECNICO" [disabled]="isOnline || !isEditing">Edificio Politécnico</option>
+                              <option value="ALU" [disabled]="isOnline || !isEditing">ALU</option>
+                              <option value="Oficina" [disabled]="isOnline || !isEditing">Oficina</option>
+                              <option value="Despacho" [disabled]="isOnline || !isEditing">Despacho</option>
+                              <option value="Biblioteca" [disabled]="isOnline || !isEditing">Biblioteca</option>
+                              <option value="Cafeteria" [disabled]="isOnline || !isEditing">Cafetería</option>
+                              {{location}}
                             </select>
-                            <input *ngIf="!isEditing" class="location-input" [(ngModel)]="location" readonly>    
                           </div>
-                        </div>
                       </div>
                       <span class="error-message" style="color: red" *ngIf="isInvalidLocation && !checkingLocation"> {{ errorLocation }} </span>
                       <div class="gi-input-container" *ngIf="!isEditing && !isOrganizer">

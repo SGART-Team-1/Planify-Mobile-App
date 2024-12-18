@@ -1,9 +1,9 @@
 
 .input-issue {
-  width: 100%;
+  width: 100px;
 }
 .input-title{
-  width:120px;
+  width:200px;
 }
 .close {
   width: 45px;
@@ -16,10 +16,8 @@
 }
 .input-container {
   display: flex;
-  max-width: 200px;
   flex-direction: row;
   justify-content: left;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
   border-radius: 15px;
 }
 .general-info-photo-observations {
@@ -32,6 +30,8 @@
   padding-right: 40px;
   height: 100%;
   padding-bottom: 15px;
+  width: 270px;
+
 }
 .general-info-photo {
   padding-top: 30px;
@@ -86,7 +86,7 @@
 }
 .all-day {
   background-color: #023047;
-  padding-right: 3px;
+  padding-right: 3wapx;
 }
 
 .invitation-div{
@@ -198,6 +198,7 @@ strong {
   align-items: center;
   justify-content: center;
   transition: border-color 0.2s, background-color 0.2s;
+  width: 100px;
 }
 
 input {
@@ -272,7 +273,7 @@ a {
 /*Check-box*/
 .checkbox-wrapper * {
   -webkit-tap-highlight-color: transparent;
-  outline: none;
+  ;
 }
 
 .checkbox-wrapper input[type="checkbox"] {
@@ -594,7 +595,7 @@ a {
 
   .attendant-card {
     height: 50px;
-    width: 100%;
+    width: 220px;
     font-size: 0.6rem; /* Reduce la fuente de los elementos */
     background: #023047;
     transition: all 0.4s;
