@@ -1,26 +1,85 @@
-body {
+.common-interface {
   display: flex;
-  flex-direction: column;
-  height: 100vh;
+  flex-direction: row; /* Distribución horizontal */
+  height: 100vh; /* Altura completa de la pantalla */
+  width: 100vw; /* Asegura que ocupe todo el ancho */
   margin: 0;
+  overflow-x: auto; /* Permite scroll horizontal */
+  overflow-y: hidden; /* Evita scroll vertical innecesario */
+  position: relative; /* Contexto para elementos posicionados */
 }
 
-.main-container {
+.calendar-container {
+  flex: 2; /* Proporción del espacio para el calendario */
+  min-width: 70%; /* Define un ancho mínimo para el calendario */
+  overflow-y: auto; /* Permite scroll vertical dentro del calendario si es necesario */
+}
+
+.footer {
+  flex: 0; /* El footer no debe cambiar su tamaño */
+  min-width: 30%; /* Ancho mínimo para el footer */
+  background-color: #f1f1f1;
+  padding: 10px;
   display: flex;
-  flex: 1;
+  flex-direction: column; /* Botones en columna */
+  align-items: center;
+  justify-content: center;
+  position: fixed; /* Fija el footer en su posición */
+  right: 0; /* Siempre pegado al lado derecho de la pantalla */
+  bottom: 0; /* Siempre pegado a la parte inferior de la pantalla */
+  height: auto; /* Ajusta su altura automáticamente */
+  z-index: 1000; /* Asegura que esté por encima del resto del contenido */
+  box-shadow: -3px 0 5px rgba(0, 0, 0, 0.2); /* Añade una sombra para separar visualmente el footer */
 }
 
-.content {
-  flex: 1;
+.btn-footer-container {
   display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100dvh;
-  height: 100dvh;
+  flex-direction: column; /* Botones en columna */
+  gap: 10px; /* Espaciado entre botones */
 }
 
-.pruebas{
-width: 5500px;
-height: 5500px;
-background-color: #056124;
+.btn {
+  padding: 15px 20px;
+  font-size: 0.9rem;
+}
+
+.btn-event {
+  background: #219dbc96;
+  cursor: not-allowed;
+  color: white;
+  border-radius: 15px;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  padding: 15px 20px;
+  text-align: center;
+}
+
+/* Media query para dispositivos pequeños */
+@media (max-width: 480px) {
+  .common-interface {
+    flex-direction: row; /* Mantén la vista horizontal */
+    overflow-x: auto; /* Asegura que se puede hacer scroll horizontal */
+  }
+
+  .calendar-container {
+    min-width: 70%;
+    flex: 2;
+  }
+
+  .footer {
+    min-width: 30%;
+    flex: 1;
+    padding: 5px;
+    position: sticky;
+    display: left;
+  }
+
+  .btn {
+    font-size: 0.8rem;
+    padding: 10px 15px;
+  }
+
+  .btn-footer-container {
+    gap: 5px;
+  }
 }

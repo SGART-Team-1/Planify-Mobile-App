@@ -1,17 +1,3 @@
-.menu-lateral {
-  height: auto;
-  min-height: 100%;
-  width: auto;
-  background: #023047;
-  color: white;
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease-in-out;
-  overflow: hidden;
-}
 
 .home-container {
   display: flex;
@@ -29,17 +15,9 @@
 }
 
 .logo {
-  width: 95px;
-  height: 95px;
-  padding: 10px;
-}
-
-.sidebar__nav {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: center;
-  gap: 40px;
+  scale:initial;
+  max-width:80px;
+  height:auto;
 }
 
 .sidebar__item.active {
@@ -50,13 +28,9 @@
 .btn {
   background: #219ebc;
   color: white;
-  border-radius: 15px;
   cursor: pointer;
-  letter-spacing: 2px;
-  font-size: 1rem;
-  padding: 17px 20px;
-  text-align: center;
-  margin: 0 9px;
+  font-size: 0.5rem; 
+  text-align: left;
 }
 
 .perfil-container {
@@ -77,6 +51,11 @@
   color: #023047;
 }
 
+.slidebar__nav {
+  align-items: center;
+  justify-content: center;
+}
+
 .actualuser.active p {
   color: #023047;
   font-weight: bold;
@@ -90,48 +69,31 @@
   object-fit: cover;
   object-position: center;
 }
-
 .notifications-container {
-  position: fixed;
   display: inline-block;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding-top: 5px;
-  margin-bottom: 5px;
-  margin-top: 580px;
+  align-items: center;
 }
+
 
 .notification-button {
   background: none;
   border: none;
-  padding-left: 10px;
-  position: absolute;
+  width: 100px;
+  height: 100px;
+  position: relative;
   font-size: 1.5rem;
   cursor: pointer;
+  margin-top: 100px;
+  height: 100%;
 }
 
 .notification-count {
-  position: absolute;
-  top: -5px;
-  right: -10px;
   background-color: red;
   color: white;
   border-radius: 50%;
+  margin-left: 30px;
   font-size: 0.75rem;
   padding: 2px 6px;
-}
-
-.notifications-dropdown {
-  position: absolute;
-  bottom: calc(100% + 10px); /* Cambiado para desplegar hacia arriba */
-  left: 0;
-  background: white;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Sombra ajustada para arriba */
-  border-radius: 4px;
-  width: 250px;
-  z-index: 1000;
-  padding: 10px;
-  animation: slideUp 0.3s ease-in-out; /* Animación opcional */
 }
 
 @keyframes slideUp {
@@ -177,9 +139,11 @@
   color: red;
   font-size: 1rem;
   cursor: pointer;
-  visibility: hidden; /* Oculta la cruz por defecto */
-  transition: visibility 0.3s ease, opacity 0.3s ease;
-  opacity: 0;
+}
+
+.delete-button-img{
+  max-width: 20px;
+  height: auto;
 }
 
 .notifications-dropdown li:hover .delete-button {
@@ -191,34 +155,57 @@
   background-color: white;
   color: black;
   font-weight: normal;
+  width: auto;
 }
 
 .read {
   background-color: #f0f0f0;
   color: #888;
   font-weight: normal;
+  width: auto;
 }
 
 /* Media queries para hacer el diseño responsive */
-@media (max-width: 1024px) {
+@media (max-width: 480px) {
+  .notifications-dropdown {
+    position:fixed;
+    background: white;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Sombra ajustada para arriba */
+    border-radius: 4px;
+    bottom: 40px;
+    left: 70px;
+    max-width: 250px;
+    z-index: 1000;
+    padding: 10px;
+    animation: slideUp 0.3s ease-in-out; /* Animación opcional */
+  }
+
   .menu-lateral {
-    width: 200px; /* Reduce el tamaño del menú lateral en pantallas medianas */
+    height: 100%;
+    min-height: 100%;
+    width: 95px;
+    background: #023047;
+    color: white;
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: flex-end;
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+    /*width: 400px; /* Reduce el tamaño del menú lateral en pantallas medianas */
   }
 }
-
+/*
 @media (max-width: 480px) {
   .menu-lateral {
     height: 900px;
     width: 95px; /* Reduce el tamaño del menú lateral en pantallas medianas */
-  }
-
-  .btn{
-    font-size: 12px;
-  }
-
+  /*}
 
   .exit p {
     display: none;
   }
   
 }
+**/
