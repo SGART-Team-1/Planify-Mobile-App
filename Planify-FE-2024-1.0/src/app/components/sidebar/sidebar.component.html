@@ -10,6 +10,12 @@
     </button>
   </div>
 
+  <div class=sidebar__nav *ngIf="actualUser.dtype == 'CommonUser'">
+    <button class="btn sidebar__item" routerLink="/user-calendar" routerLinkActive="active">
+      Mis Reuniones
+    </button>
+  </div>
+
   <div class="sidebar__nav">
     <div class="notifications-container">
     <!-- Campanita de Notificaciones -->
@@ -47,6 +53,7 @@
     </div>
     <div class="exit" *ngIf="actualUser.dtype == 'Administrator' || actualUser.dtype == 'CommonUser'" (click)="logOut()">
       <img class="exitImg" src="../../../assets/cerrarSesion.png" alt="Salir">
+      <p class="actualUserImgName"></p>
       <p class="actualUserImgName"></p>
     </div>
   </div>

@@ -18,6 +18,9 @@
   scale:initial;
   max-width:80px;
   height:auto;
+  scale:initial;
+  max-width:80px;
+  height:auto;
 }
 
 .sidebar__item.active {
@@ -29,6 +32,8 @@
   background: #219ebc;
   color: white;
   cursor: pointer;
+  font-size: 0.5rem; 
+  text-align: left;
   font-size: 0.5rem; 
   text-align: left;
 }
@@ -56,6 +61,11 @@
   justify-content: center;
 }
 
+.slidebar__nav {
+  align-items: center;
+  justify-content: center;
+}
+
 .actualuser.active p {
   color: #023047;
   font-weight: bold;
@@ -72,7 +82,9 @@
 .notifications-container {
   display: inline-block;
   align-items: center;
+  align-items: center;
 }
+
 
 
 .notification-button {
@@ -81,8 +93,13 @@
   width: 100px;
   height: 100px;
   position: relative;
+  width: 100px;
+  height: 100px;
+  position: relative;
   font-size: 1.5rem;
   cursor: pointer;
+  margin-top: 100px;
+  height: 100%;
   margin-top: 100px;
   height: 100%;
 }
@@ -91,6 +108,7 @@
   background-color: red;
   color: white;
   border-radius: 50%;
+  margin-left: 30px;
   margin-left: 30px;
   font-size: 0.75rem;
   padding: 2px 6px;
@@ -146,6 +164,11 @@
   height: auto;
 }
 
+.delete-button-img{
+  max-width: 20px;
+  height: auto;
+}
+
 .notifications-dropdown li:hover .delete-button {
   visibility: visible; /* Muestra la cruz al pasar el cursor */
   opacity: 1;
@@ -156,6 +179,7 @@
   color: black;
   font-weight: normal;
   width: auto;
+  width: auto;
 }
 
 .read {
@@ -163,9 +187,24 @@
   color: #888;
   font-weight: normal;
   width: auto;
+  width: auto;
 }
 
 /* Media queries para hacer el diseño responsive */
+@media (max-width: 480px) {
+  .notifications-dropdown {
+    position:fixed;
+    background: white;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Sombra ajustada para arriba */
+    border-radius: 4px;
+    bottom: 40px;
+    left: 70px;
+    max-width: 250px;
+    z-index: 1000;
+    padding: 10px;
+    animation: slideUp 0.3s ease-in-out; /* Animación opcional */
+  }
+
 @media (max-width: 480px) {
   .notifications-dropdown {
     position:fixed;
