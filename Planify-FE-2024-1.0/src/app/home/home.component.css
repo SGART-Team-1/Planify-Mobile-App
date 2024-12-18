@@ -84,40 +84,10 @@ body {
   color: var(--secondary-color);
   padding: 8px 12px;
   background: var(--primary-color);
-  display: flex;
-  transition: 0.2s background;
+  transition: 0.2s;
   align-items: center;
   gap: 0.4em;
   flex-grow: 1;
-}
-
-.btn-login .arrow-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.btn-login .arrow {
-  margin-top: 1px;
-  width: var(--arrow-width);
-  background: var(--primary-color);
-  height: var(--arrow-stroke);
-  position: relative;
-  transition: 0.2s;
-}
-
-.btn-login .arrow::before {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  border: solid var(--secondary-color);
-  border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
-  display: inline-block;
-  top: -3px;
-  right: 3px;
-  transition: 0.2s;
-  padding: 3px;
-  transform: rotate(-45deg);
 }
 
 .btn-login:hover {
