@@ -62,24 +62,6 @@ export class CallMeetingComponent {
   errorEndTime: string='Rellene este campo.';
   errorLocation: string='Rellene este campo.'; 
 
-  checkingIssue: boolean=true;
-  checkingDate: boolean=true;
-  checkingInitTime: boolean=true;
-  checkingEndTime: boolean=true;
-  checkingLocation: boolean=true;
-
-  isInvalidIssue: boolean=true;
-  isInvalidDate: boolean=false;
-  isInvalidInitTime: boolean=false;
-  isInvalidEndTime: boolean=false;
-  isInvalidLocation: boolean=false;
-
-  errorIssue: string='Rellene este campo.';
-  errorDate: string='Rellene este campo.';
-  errorInitTime: string='Rellene este campo.';
-  errorEndTime: string='Rellene este campo.';
-  errorLocation: string='Rellene este campo.'; 
-
 
   constructor(private readonly route: ActivatedRoute, private readonly router: Router, private readonly dialog: MatDialog, private readonly client: HttpClient, private callMeetingService: CallMeetingService) { }
   private readonly apiUrl = environment.apiUrl + '/api/users';
@@ -160,13 +142,6 @@ export class CallMeetingComponent {
     }else
       this.isInvalidDate=false;
       
-    this.checkingDate=true;
-    if(this.meetingDate.trim()===''){
-      this.isInvalidDate=true;
-      this.errorDate='Rellene este campo.';
-    }else
-      this.isInvalidDate=false;
-      
     //Cuando la fecha cambia, se debe actualizar la lista de asistentes
     if (this.attendants.length > 0) {
       this.dialog.open(AdviseModalComponent, {
@@ -195,22 +170,7 @@ export class CallMeetingComponent {
     if (this.isOutsideWorkHours()) invalidMeeting=true;
     if (this.isMeetingDateInvalid()) invalidMeeting=true;
     if (this.hasNoAttendants()) invalidMeeting=true;
-    let invalidMeeting=false;
-    this.checkAll();
-    if (this.isMeetingDurationTooShort()) invalidMeeting=true;
-    if (this.isMeetingSpanningMultipleWorkBlocks()) invalidMeeting=true;
-    if (this.isStartTimeAfterEndTime()) invalidMeeting=true;
-    if (this.isInvalidMeeting()) invalidMeeting=true;
-    if (this.isOutsideWorkHours()) invalidMeeting=true;
-    if (this.isMeetingDateInvalid()) invalidMeeting=true;
-    if (this.hasNoAttendants()) invalidMeeting=true;
 
-    if (!invalidMeeting){
-      this.createMeeting();
-    }
-  }
-  isInvalidMeeting(){
-    return this.isInvalidDate || this.isInvalidEndTime || this.isInvalidInitTime || this.isInvalidIssue || this.isInvalidLocation;
     if (!invalidMeeting){
       this.createMeeting();
     }
@@ -232,20 +192,7 @@ export class CallMeetingComponent {
       this.isInvalidEndTime=true;
       this.errorEndTime='La hora de fin debe estar dentro del horario laboral.';
       isInvalidWorkHour= true;
-    if(this.isAllDay) return false;
-    let isInvalidWorkHour=false;
-    if (this.meetingInitTime < this.scheduleInitTime.slice(0.5) || this.meetingInitTime > this.schedulegEndTime.slice(0.5)){
-      this.isInvalidInitTime=true;
-      this.errorInitTime='La hora de inicio debe estar dentro del horario laboral.';
-      isInvalidWorkHour= true;
     }
-      
-    if(this.meetingEndTime > this.schedulegEndTime.slice(0.5) || this.meetingEndTime < this.scheduleInitTime.slice(0.5)) {
-      this.isInvalidEndTime=true;
-      this.errorEndTime='La hora de fin debe estar dentro del horario laboral.';
-      isInvalidWorkHour= true;
-    }
-    return isInvalidWorkHour;
     return isInvalidWorkHour;
   }
 
@@ -255,8 +202,6 @@ export class CallMeetingComponent {
     if (meetingDate < today) {
       this.isInvalidDate=true;
       this.errorDate='La fecha de la reunión debe ser posterior a la fecha actual';
-      this.isInvalidDate=true;
-      this.errorDate='La fecha de la reunión debe ser posterior a la fecha actual';
       return true;
     }
     return false;
@@ -264,12 +209,7 @@ export class CallMeetingComponent {
 
    isStartTimeAfterEndTime(): boolean {
     if(this.isAllDay) return false;
-    if(this.isAllDay) return false;
     if (this.meetingInitTime > this.meetingEndTime) {
-      this.isInvalidInitTime=true;
-      this.errorInitTime='La hora de inicio debe ser menor a la hora de fin';
-      this.isInvalidEndTime=true;
-      this.errorEndTime='La hora de fin debe ser mayor a la hora de inicio';
       this.isInvalidInitTime=true;
       this.errorInitTime='La hora de inicio debe ser menor a la hora de fin';
       this.isInvalidEndTime=true;
@@ -281,14 +221,11 @@ export class CallMeetingComponent {
 
    isMeetingSpanningMultipleWorkBlocks(): boolean {
     if(this.isAllDay) return false;
-    if(this.isAllDay) return false;
     for (let i = 0; i < this.workSchedules.length - 1; i++) {
       const currentEnd = this.workSchedules[i].endHour;
       const nextStart = this.workSchedules[i + 1].startHour;
 
       if (this.meetingInitTime < nextStart && this.meetingEndTime > currentEnd) {
-        this.isInvalidEndTime=true;
-        this.errorEndTime='La reunión no puede abarcar múltiples bloques de horario laboral';
         this.isInvalidEndTime=true;
         this.errorEndTime='La reunión no puede abarcar múltiples bloques de horario laboral';
         return true;
@@ -299,14 +236,11 @@ export class CallMeetingComponent {
 
    isMeetingDurationTooShort(): boolean {
     if(this.isAllDay) return false;
-    if(this.isAllDay) return false;
     const initTime = new Date('1970-01-01T' + this.meetingInitTime + ':00');
     const endTime = new Date('1970-01-01T' + this.meetingEndTime + ':00');
     const diff = endTime.getTime() - initTime.getTime();
     const minutes = Math.floor(diff / 60000);
     if (minutes < 30) {
-      this.isInvalidEndTime=true;
-      this.errorEndTime='La reunión debe durar al menos 30 minutos';
       this.isInvalidEndTime=true;
       this.errorEndTime='La reunión debe durar al menos 30 minutos';
       return true;
@@ -322,12 +256,6 @@ export class CallMeetingComponent {
       return true;
     }
     return false;
-  }
-
-  deleteAttendant(id: string) {
-    this.attendants = this.attendants.filter(
-      (attendant) => attendant.id !== id
-    );
   }
 
   deleteAttendant(id: string) {
@@ -412,60 +340,10 @@ export class CallMeetingComponent {
     }else
       this.isInvalidLocation=false;
   }
-    if(this.isAllDay){
-      this.isInvalidInitTime=false;
-      this.isInvalidEndTime=false;
-    }else{
-      this.onInitTimeChange();
-      this.onEndTimeChange();
-    }
-  }
-
-  onIssueChange(){
-    this.checkingIssue=true;
-    if(this.issue.trim()===''){
-      this.isInvalidIssue=true;
-    }else
-      this.isInvalidIssue=false;
-  }
-
-  onInitTimeChange(){
-    this.checkingInitTime=true;
-    if(this.meetingInitTime<this.meetingEndTime)
-      this.checkingEndTime=true;
-      this.isInvalidEndTime=false;
-    if(this.meetingInitTime.trim()===''){
-      this.isInvalidInitTime=true;
-    }else
-      this.isInvalidInitTime=false;
-  }
-
-  onEndTimeChange(){
-    this.checkingEndTime=true;
-    if(this.meetingInitTime<this.meetingEndTime)
-      this.checkingInitTime=true;
-      this.isInvalidInitTime=false;
-    if(this.meetingEndTime.trim()===''){
-      this.isInvalidEndTime=true;
-    }else
-      this.isInvalidEndTime=false;
-  }
-
-  onLocationChange(){
-    this.checkingLocation=true;
-    if(this.location.trim()===''){
-      this.isInvalidLocation=true;
-    }else
-      this.isInvalidLocation=false;
-  }
 
   onOnlineChange() {
     this.isOnline = !this.isOnline;
     this.location = this.isOnline ? 'Online' : 'ESI';
-    if(this.isOnline){
-      this.isInvalidLocation=false;
-    }else
-      this.onLocationChange();
     if(this.isOnline){
       this.isInvalidLocation=false;
     }else
@@ -504,14 +382,6 @@ export class CallMeetingComponent {
       return hours1 - hours2;
     }
     return minutes1 - minutes2;
-  }
-
-  checkAll(){
-    this.checkingLocation=false;
-    this.checkingEndTime=false;
-    this.checkingInitTime=false;
-    this.checkingIssue=false;
-    this.checkingDate=false;
   }
 
   checkAll(){
