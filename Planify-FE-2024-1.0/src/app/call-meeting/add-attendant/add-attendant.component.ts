@@ -8,6 +8,7 @@ import { UserManagementService } from '../../user-management/user-management.ser
 import { LegendModalComponent } from './legend-modal/legend-modal.component';
 import { CallMeetingService } from '../call-meeting.service';
 
+
 @Component({
   selector: 'app-add-attendant',
   standalone: true,

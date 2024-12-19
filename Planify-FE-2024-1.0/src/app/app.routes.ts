@@ -30,11 +30,11 @@ export const routes: Routes = [
   { path: 'inspect-user/:userId', component: InspectUserComponent , canActivate: [AuthGuard], data: { role: 'Administrator' }}, //ruta para ir a inspect-user
   { path: 'absences/:userId', component: AbsencesComponent, canActivate: [AuthGuard], data: { role: 'Administrator' } }, //ruta para ir a absences
   { path: 'admin-management', component: AdminManagementComponent, canActivate: [AuthGuard], data: { role: 'Administrator' } }, //ruta para ir a admin-management
-  { path: 'user-calendar', component: UserCalendarComponent, canActivate: [AuthGuard], data: { role: 'CommonUser' } }, //ruta para ir a user-calendar
+  { path: 'user-calendar', component: UserCalendarComponent/*, canActivate: [AuthGuard], data: { role: 'CommonUser' }*/ }, //ruta para ir a user-calendar
   { path: 'inspect-admin/:adminId', component: InspectAdminComponent, canActivate: [AuthGuard], data: { role: 'Administrator' } }, //ruta para ir a inspect-admin
   { path: 'work-schedule', component: WorkScheduleComponent, canActivate: [AuthGuard], data: { role: 'Administrator' } }, //ruta para ir a work-schedule
   { path: 'create-admin', component: CreateAdminComponent, canActivate: [AuthGuard], data: { role: 'Administrator' } }, //ruta para ir a create-admin
-  { path: 'call-meeting', component: CallMeetingComponent , canActivate: [AuthGuard], data: { role: 'CommonUser' }}, //ruta para ir a call-meeting
+  { path: 'call-meeting', component: CallMeetingComponent /*, canActivate: [AuthGuard], data: { role: 'CommonUser' }*/}, //ruta para ir a call-meeting
   { path: 'inspect-meeting/:meetingId', component: InspectMeetingComponent , canActivate: [AuthGuard], data: { role: 'CommonUser' }},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' },

@@ -1,12 +1,12 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { NgClass, CommonModule } from '@angular/common';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterService } from './register.service';
 import { RegisterParams } from '../../assets/Types/types';
 import { DobleFactorVerifyModalComponent } from '../login/doble-factor-verify-modal/doble-factor-verify-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { IonicModule} from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -17,9 +17,10 @@ import { MatDialog } from '@angular/material/dialog';
     ReactiveFormsModule,
     NgClass,
     CommonModule,
+    IonicModule,
   ],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css',
+  styleUrls: ['./register.component.css'],
   encapsulation: ViewEncapsulation.Emulated,
 })
 export class RegisterComponent {
@@ -49,6 +50,7 @@ export class RegisterComponent {
   isEmptyPassword: boolean = true;
   isEmptyPassword2: boolean = true;
   isEmptyEmail: boolean = true;
+
   constructor(
     private readonly registerService: RegisterService,
     private readonly router: Router,
@@ -58,8 +60,7 @@ export class RegisterComponent {
   register() {
     if (!this.isInvalidForm) {
       if (typeof this.profileImageUrl === 'string') {
-        // Eliminar el prefijo base64 si existe
-        const base64Data = this.profileImageUrl.split(',')[1]; // Solo obtiene la parte base64 pura
+        const base64Data = this.profileImageUrl.split(',')[1];
 
         const params: RegisterParams = {
           email: this.email,
@@ -75,7 +76,7 @@ export class RegisterComponent {
         };
 
         this.registerService.register(params).subscribe(
-          resultado => {
+          (resultado) => {
             if (resultado.qr_code) {
               const dialogRef = this.dialog.open(
                 DobleFactorVerifyModalComponent,
@@ -83,7 +84,7 @@ export class RegisterComponent {
                   data: { qr_code: resultado.qr_code },
                 }
               );
-              dialogRef.afterClosed().subscribe((resultado: any) => { //COmprobar, he metido la pezuña GONZALO
+              dialogRef.afterClosed().subscribe((resultado: any) => {
                 if (resultado) {
                   this.router.navigate(['/']);
                   window.scrollTo(0, 0);
@@ -103,26 +104,19 @@ export class RegisterComponent {
 
   validateName(): void {
     this.isEmptyName = this.name.trim() == '';
-    // Si contiene números u otros caracteres, se marca como inválido.
     this.isInvalidName = this.noNumbers(this.name);
     this.checkFormValidity();
   }
 
   validateSurnames(): void {
     this.isEmptySurnames = this.surnames.trim() == '';
-    // Si contiene números u otros caracteres, se marca como inválido.
     this.isInvalidSurnames = this.noNumbers(this.surnames);
     this.checkFormValidity();
   }
 
   noNumbers(input: string): boolean {
-    let isInvalid = false;
-    // Definimos una expresión regular que solo permite letras y espacios.
     const regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
-
-    // Si no cumple (es decir, contiene números u otros caracteres), se marca como inválido=true.
-    isInvalid = !regex.test(input);
-    return isInvalid;
+    return !regex.test(input);
   }
 
   validatePassword(): void {
@@ -140,19 +134,11 @@ export class RegisterComponent {
   }
 
   passwordRequirements(input: string): boolean {
-    // - Al menos 8 caracteres
-    // - Al menos 1 mayúscula
-    // - Al menos 1 minúscula
-    // - Al menos 1 número
-    // - Al menos 1 carácter especial
-    let isInvalid = false;
     const regex =
       /^(?=.*[A-Za-zÁÉÍÓÚáéíóúÑñÄËÏÖÜäëïöüÀÈÌÒÙàèìòùÇç])(?=.*[a-záéíóúäëïöüàèìòùç])(?=.*[A-ZÁÉÍÓÚÄËÏÖÜÀÈÌÒÙÇ])(?=.*\d)(?=.*[!@#$%^&*(),.?":¿'¡+{}|<>_\-\/\\=\[\]`;ºª~€¬¨])[A-Za-zÁÉÍÓÚáéíóúÑñÄËÏÖÜäëïöüÀÈÌÒÙàèìòùÇç\d!@#$%^&*(),.?":¿'¡+{}|<>_\-\/\\=\[\]`;ºª~€¬¨]{8,}$/;
-    isInvalid = !regex.test(input);
-    return isInvalid;
+    return !regex.test(input);
   }
 
-  // Método para activar el diálogo de selección de archivos
   triggerFileInput(): void {
     const fileInput = document.getElementById('profilePic') as HTMLInputElement;
     if (fileInput) {
@@ -160,7 +146,6 @@ export class RegisterComponent {
     }
   }
 
-  // Método para manejar la selección del archivo
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
 
@@ -169,11 +154,10 @@ export class RegisterComponent {
       const reader = new FileReader();
 
       reader.onload = (e: ProgressEvent<FileReader>) => {
-        // Verifica si el resultado es definido antes de asignarlo
         if (e.target?.result) {
           this.profileImageUrl = e.target.result;
         } else {
-          this.profileImageUrl = null; // O cualquier otro manejo que desees
+          this.profileImageUrl = null;
         }
       };
 

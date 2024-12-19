@@ -1,15 +1,3 @@
-.menu-lateral {
-  height: 100dvh;
-  width: 240px;
-  background: #023047;
-  color: white;
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease-in-out;
-}
 
 .home-container {
   display: flex;
@@ -27,17 +15,12 @@
 }
 
 .logo {
-  width: 95px;
-  height: 95px;
-  padding: 10px;
-}
-
-.sidebar__nav {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: center;
-  gap: 40px;
+  scale:initial;
+  max-width:80px;
+  height:auto;
+  scale:initial;
+  max-width:80px;
+  height:auto;
 }
 
 .sidebar__item.active {
@@ -48,13 +31,11 @@
 .btn {
   background: #219ebc;
   color: white;
-  border-radius: 15px;
   cursor: pointer;
-  letter-spacing: 2px;
-  font-size: 1rem;
-  padding: 17px 20px;
-  text-align: center;
-  margin: 0 9px;
+  font-size: 0.5rem; 
+  text-align: left;
+  font-size: 0.5rem; 
+  text-align: left;
 }
 
 .perfil-container {
@@ -75,6 +56,16 @@
   color: #023047;
 }
 
+.slidebar__nav {
+  align-items: center;
+  justify-content: center;
+}
+
+.slidebar__nav {
+  align-items: center;
+  justify-content: center;
+}
+
 .actualuser.active p {
   color: #023047;
   font-weight: bold;
@@ -88,11 +79,174 @@
   object-fit: cover;
   object-position: center;
 }
+.notifications-container {
+  display: inline-block;
+  align-items: center;
+  align-items: center;
+}
 
-/* Media queries para hacer el diseño responsive */
-@media (max-width: 1024px) {
-  .menu-lateral {
-    width: 200px; /* Reduce el tamaño del menú lateral en pantallas medianas */
+
+
+.notification-button {
+  background: none;
+  border: none;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-top: 100px;
+  height: 100%;
+  margin-top: 100px;
+  height: 100%;
+}
+
+.notification-count {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  margin-left: 30px;
+  margin-left: 30px;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+.notifications-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notifications-dropdown li {
+  position: relative;
+  padding: 10px 40px 10px 10px;
+  border-bottom: 1px solid #ddd;
+  color: black;
+  font-size: 12px;
+  white-space: nowrap; /* Evita que el texto ocupe múltiples líneas */
+  overflow: hidden; /* Oculta el texto que no cabe */
+  text-overflow: ellipsis; /* Muestra puntos suspensivos si el texto es demasiado largo */
+  cursor: pointer;
+}
+
+.notifications-dropdown li:last-child {
+  border-bottom: none;
+}
+
+.delete-button {
+  position: absolute;
+  right: 10px; /* Ubicación en la parte derecha */
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: red;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.delete-button-img{
+  max-width: 20px;
+  height: auto;
+}
+
+.delete-button-img{
+  max-width: 20px;
+  height: auto;
+}
+
+.notifications-dropdown li:hover .delete-button {
+  visibility: visible; /* Muestra la cruz al pasar el cursor */
+  opacity: 1;
+}
+
+.unread {
+  background-color: white;
+  color: black;
+  font-weight: normal;
+  width: auto;
+  width: auto;
+}
+
+.read {
+  background-color: #f0f0f0;
+  color: #888;
+  font-weight: normal;
+  width: auto;
+  width: auto;
+}
+
+/* Media queries para hacer el diseño responsive */
+@media (max-width: 480px) {
+  .notifications-dropdown {
+    position:fixed;
+    background: white;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Sombra ajustada para arriba */
+    border-radius: 4px;
+    bottom: 40px;
+    left: 70px;
+    max-width: 250px;
+    z-index: 1000;
+    padding: 10px;
+    animation: slideUp 0.3s ease-in-out; /* Animación opcional */
+  }
+
+@media (max-width: 480px) {
+  .notifications-dropdown {
+    position:fixed;
+    background: white;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Sombra ajustada para arriba */
+    border-radius: 4px;
+    bottom: 40px;
+    left: 70px;
+    max-width: 250px;
+    z-index: 1000;
+    padding: 10px;
+    animation: slideUp 0.3s ease-in-out; /* Animación opcional */
+  }
+
+  .menu-lateral {
+    height: 100%;
+    min-height: 100%;
+    width: 95px;
+    background: #023047;
+    color: white;
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: flex-end;
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+    /*width: 400px; /* Reduce el tamaño del menú lateral en pantallas medianas */
+  }
+}
+
+}
+/*
+@media (max-width: 480px) {
+  .menu-lateral {
+    height: 900px;
+    width: 95px; /* Reduce el tamaño del menú lateral en pantallas medianas */
+  /*}
+
+  .exit p {
+    display: none;
+  }
+  
+}
+**/

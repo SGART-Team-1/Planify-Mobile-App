@@ -1,21 +1,22 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [IonicModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  @ViewChild('aboutSection') aboutSection!: ElementRef;
 
-  @ViewChild('aboutSection') aboutSection!: ElementRef
-
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   goToAbout() {
-    this.aboutSection.nativeElement.scrollIntoView({behavior: 'smooth'});
+    // Usamos desplazamiento suave con Ionic
+    this.aboutSection.nativeElement.scrollIntoView({ behavior: 'smooth' });
   }
 
   goToLogin() {
@@ -24,7 +25,8 @@ export class HomeComponent {
 
   goToRegister() {
     this.router.navigate(['/register']).then(() => {
-      window.scrollTo(0,0);
+      // Reinicia la vista al tope cuando cambie la ruta
+      window.scrollTo(0, 0);
     });
   }
 }
