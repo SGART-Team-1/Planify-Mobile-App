@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AppUser } from './AppUser';
 import { InspectAdminService } from '../../inspect-admin/inspect-admin.service';
@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment.custom';
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationDetailComponent } from './notification-detail.component';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -24,12 +25,21 @@ export class SidebarComponent implements OnInit {
   notifications: { id: string; message: string; reading_date: any | null }[] = [];
   showNotifications: boolean = false;
 
+  @ViewChild('notificationss')
+  notificationsRef!: ElementRef;
+  
   constructor(
     private readonly client: HttpClient,
     private readonly router: Router,
     private readonly inspectServices: InspectAdminService,
-    private readonly dialog: MatDialog
-  ) {}
+    private readonly dialog: MatDialog,
+    private renderer: Renderer2
+  ) {
+    this.renderer.listen('window', 'click',(e:Event)=>{
+      if(e.target != this.notificationsRef.nativeElement && !this.notificationsRef.nativeElement.contains(e.target))
+        this.toggleNotifications();
+      });
+  }
 
   ngOnInit(): void {
     console.log('SidebarComponent inicializado');

@@ -10,12 +10,6 @@
     </button>
   </div>
 
-  <div class=sidebar__nav *ngIf="actualUser.dtype == 'CommonUser'">
-    <button class="btn sidebar__item" routerLink="/user-calendar" routerLinkActive="active">
-      Mis Reuniones
-    </button>
-  </div>
-
   <div class="sidebar__nav">
     <div class="notifications-container">
     <!-- Campanita de Notificaciones -->
@@ -26,7 +20,7 @@
       <i class="fa fa-bell"></i>
     </button>
     </div>
-    <div *ngIf="showNotifications" class="notifications-dropdown">
+    <div #notificationss *ngIf="showNotifications" class="notifications-dropdown">
       <ul>
         <label *ngIf="notifications.length === 0" style="color:black">No hay más notificaciones.</label>
         <li *ngFor="let notification of notifications; let i = index"

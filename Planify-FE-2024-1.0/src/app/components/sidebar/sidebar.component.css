@@ -197,22 +197,8 @@
     background: white;
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Sombra ajustada para arriba */
     border-radius: 4px;
-    bottom: 40px;
-    left: 70px;
-    max-width: 250px;
-    z-index: 1000;
-    padding: 10px;
-    animation: slideUp 0.3s ease-in-out; /* Animación opcional */
-  }
-
-@media (max-width: 480px) {
-  .notifications-dropdown {
-    position:fixed;
-    background: white;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2); /* Sombra ajustada para arriba */
-    border-radius: 4px;
-    bottom: 40px;
-    left: 70px;
+    bottom: 200px;
+    left: 20px;
     max-width: 250px;
     z-index: 1000;
     padding: 10px;
@@ -234,8 +220,6 @@
     overflow: hidden;
     /*width: 400px; /* Reduce el tamaño del menú lateral en pantallas medianas */
   }
-}
-
 }
 /*
 @media (max-width: 480px) {
